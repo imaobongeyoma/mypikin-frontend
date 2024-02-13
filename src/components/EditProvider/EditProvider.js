@@ -1,0 +1,1 @@
+//my editprovider component js

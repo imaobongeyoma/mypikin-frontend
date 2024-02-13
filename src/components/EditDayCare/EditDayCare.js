@@ -1,0 +1,1 @@
+//my editdaycare component js

@@ -1,0 +1,1 @@
+//my  daycare list component js
