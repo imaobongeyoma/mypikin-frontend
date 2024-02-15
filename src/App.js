@@ -1,10 +1,23 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./styles/global.scss";
+import Login from "./components/Login/Login";
+import SignUp from "./components/SignUp/SignUp";
 
 function App() {
   return (
-    <div className="App">
-      Hello! Welcome to my capstone!
-    </div>
+    <BrowserRouter>
+    <Routes>
+    <Route
+          path="/login"
+          element={<Login/>}
+        />
+        <Route
+          path="/signup"
+          element={<SignUp/>}
+        />
+    </Routes>
+    </BrowserRouter>
+    
   );
 }
 
