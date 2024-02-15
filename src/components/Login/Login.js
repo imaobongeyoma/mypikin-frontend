@@ -6,7 +6,7 @@ import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
 import userloginValidationSchema from "./userloginValidationSchema";
 
-export default function SignUp() {
+export default function Login() {
 
   const SERVER_URL = process.env.REACT_APP_SERVER_URL;
     const initialState = {
@@ -32,13 +32,21 @@ export default function SignUp() {
               abortEarly: false,
             });
 
-            const response = await axios.post(`http://localhost:8081/users`, userData);
+            const {data} = await axios.post(`http://localhost:8081/users/login`, userData);
+            console.log(data);
+            setUserData(initialState);
+            sessionStorage.setItem("token", data.token);
+            navigate("/provider");
 
-              if (response.status === 201) {
-                setUserData(initialState);
-                toast.success("User was added successfully!");
-                navigate(`/`)
-              }
+
+            //   if (response.data === "Success") {
+            //     setUserData(initialState);
+            //     toast.success("User was added successfully!");
+            //     navigate("/")
+            //   }
+            //   else {
+            //     alert("No record existed")
+            //   }
               
     } catch (err) {
       if (err.name === "ValidationError") {

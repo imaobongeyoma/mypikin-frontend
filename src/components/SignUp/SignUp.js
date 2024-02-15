@@ -41,7 +41,7 @@ export default function SignUp() {
               if (response.status === 201) {
                 setUserData(initialState);
                 toast.success("User was added successfully!");
-                navigate(`/`)
+                navigate(`/login`)
               }
               
     } catch (err) {
