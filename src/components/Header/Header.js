@@ -14,7 +14,8 @@ export default function Header() {
         {/* <h2>{currentUser?.username}</h2> */}
           {currentUser ? (
             <div>
-               <h2>{currentUser?.username}</h2>
+               {/* <h2>{currentUser?.username}</h2> */}
+               <h2><Link to={`/user/${currentUser.id}`}>{currentUser.username}</Link></h2>
             <button onClick={logout}>Logout</button>
             <Link to="/createdaycare"><button >Add Daycare</button></Link> 
             </div>

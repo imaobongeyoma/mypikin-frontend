@@ -36,7 +36,7 @@ export default function Provider() {
     fetchSelectedprovider(providerid);
   }, [providerid]);
 
-  if (!selectedProvider) {
+  if (!selectedProvider || !currentUser) {
     return <div>Loading...</div>;
   }
 
