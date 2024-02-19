@@ -7,7 +7,8 @@ import { Link } from "react-router-dom";
 export default function DayCareList() {
   const SERVER_URL = process.env.REACT_APP_SERVER_URL;
   const [daycares, setDaycares] = useState([]);
-  const [selectedDaycare, setSelectedDaycare] = useState(null);
+  // const [selectedDaycare, setSelectedDaycare] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("")
   const navigate = useNavigate();
 
   // Fetch full daycare list from the API
@@ -41,7 +42,17 @@ const groupedDaycares = daycares.reduce((acc, daycare) => {
   return (
     <div>
       <h1>Daycares</h1>
-      {Object.values(groupedDaycares).map(daycare => (
+      <div>
+        <input type="text" placeholder="Search by City" onChange ={event => {setSearchTerm(event.target.value)}}></input>
+      </div>
+      {Object.values(groupedDaycares).filter((daycare) => {
+        if (searchTerm === "") {
+          return true;
+        } else if (daycare.city.toLowerCase().includes(searchTerm.toLowerCase())) {
+          return true;
+        }
+      return false;})
+      .map(daycare => (
         <Link to={`/daycares/${daycare.id}/info`} key={daycare.id}>
         <div key={daycare.id}>
           <h2>{daycare.name}</h2>

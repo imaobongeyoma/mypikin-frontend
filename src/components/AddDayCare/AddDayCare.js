@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import { useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../Context/authContext";
+import { Link } from "react-router-dom";
 
 export default function AddDayCare ()  {
     const  { currentUser } = useContext(AuthContext);
@@ -37,9 +38,7 @@ const handleChange = (e) => {
 const handleSubmit = async (e) => {
     e.preventDefault()
     const formDataToSend = new FormData();
-
-   
-    formDataToSend.append("provider_id", formData.provider_id);
+    formDataToSend.append("provider_id", currentUser.id);
     formDataToSend.append("name", formData.name);
     formDataToSend.append("daycare_description", formData.daycare_description);
     formDataToSend.append("provider_about", formData.provider_about);
@@ -68,7 +67,14 @@ const handleSubmit = async (e) => {
     }
 }
 
-
+if (!currentUser) {
+  return (
+      <main> 
+          Please Log In to create a daycare
+          <Link to="/login"> Log In</Link>
+      </main>
+  )
+  }
 
 return  (
 
@@ -84,6 +90,7 @@ return  (
           name="provider_id"
           value={formData.provider_id}
           onChange={handleChange}
+          readOnly={true}
         />
         </label>
         </div>
