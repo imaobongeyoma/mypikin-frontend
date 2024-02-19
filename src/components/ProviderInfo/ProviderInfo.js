@@ -1,10 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useParams } from "react-router-dom";
+
 
 function ProviderInfo () {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userData, setUserData] = useState(null);
+    // const { userId } = useParams();
 
 
 
@@ -19,13 +22,13 @@ function ProviderInfo () {
 
         const getCurrentUser = async () => {
             try {
-                const { data } = await axios.get("http://localhost:8081/profile", {
+                const res = await axios.get(`http://localhost:8081/profile/`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
                 });
-                console.log(data);
-                setUserData(data);
+                console.log(res.data);
+                setUserData(res.data);
             } catch (error) {
                 console.log(error);
             }
