@@ -7,6 +7,7 @@ import ProviderInfo from "./components/ProviderInfo/ProviderInfo";
 import ProviderList from "./components/ProviderList/ProviderList";
 import DayCareList from "./components/DayCareList/DayCareList";
 import SelectedDaycare from "./components/SingleDaycare/SingleDaycare";
+import AddDayCare from "./components/AddDayCare/AddDayCare";
 
 function App() {
   return (
@@ -15,9 +16,10 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/" element={<DayCareList />} />
+        <Route path="/daycarelist" element={<DayCareList/>} />
         <Route path="/provider" element={<ProviderInfo />} />
         <Route path="/providerlist" element={<ProviderList/>} />
-        <Route path="/daycarelist" element={<DayCareList/>} />
+        <Route path="/createdaycare" element={<AddDayCare/>} />
         <Route path="/daycares/:daycareid/info" element={<SelectedDaycare/>} />
       </Routes>
     </BrowserRouter>
