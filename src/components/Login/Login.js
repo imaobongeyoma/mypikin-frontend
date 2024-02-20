@@ -6,6 +6,7 @@ import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
 import userloginValidationSchema from "./userloginValidationSchema";
 import { AuthContext } from "../Context/authContext";
+import Wrapper from "../Wrapper/Wrapper";
 
 // import { AuthContext } from "../Context/authContext";
 
@@ -62,8 +63,8 @@ export default function Login() {
               
  
   return (
-    <div>
-     
+    
+     <Wrapper>
        
         <div>
         <h1>WELCOME BACK - LOG IN</h1>
@@ -88,7 +89,7 @@ export default function Login() {
         {/* <button className="form__signup" onClick={() => navigate("/signup")}>Log In</button> */}
         <button className="form__submit" type="submit">Log In</button>
       </form>
-    </div>
+      </Wrapper>
   );
 }
 

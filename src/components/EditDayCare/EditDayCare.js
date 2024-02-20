@@ -5,6 +5,7 @@ import axios from "axios";
 import { AuthContext } from "../Context/authContext";
 import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import Wrapper from "../Wrapper/Wrapper";
 
 export default function EditDayCare() {
   const { id } = useParams();
@@ -106,6 +107,7 @@ export default function EditDayCare() {
 
   return (
     <>
+    <Wrapper>
       {currentUser.id === formData.provider_id ? (
         <form onSubmit={handleSubmit}>
           <h1> Edit your Daycare</h1>
@@ -280,6 +282,8 @@ export default function EditDayCare() {
       ) : (
         <div> You are not the owner of this daycare. </div>
       )}
+      </Wrapper>
     </>
+
   );
 }

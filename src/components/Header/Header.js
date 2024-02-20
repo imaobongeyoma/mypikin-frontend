@@ -1,29 +1,120 @@
 import React, { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../Context/authContext";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import "./Header.scss"
+import logo from "../../assets/logos/pikin3.png";
+import blueicon from "../../assets/icons/blueicon.png";
+import orangeicon from "../../assets/icons/orangeicon.png";
+import deleteicon from "../../assets/icons/deleteicon.png";
+import editicon from "../../assets/icons/editicon.png";
 
 export default function Header() {
-    const { currentUser, logout } = useContext(AuthContext);
+  const { currentUser, logout } = useContext(AuthContext);
+  const [menuOpen, setMenuOpen] = useState(false)
 
-    return (
-        <div>
-        <h1>Hello</h1>
-        <Link to="/daycarelist"><button >Home</button></Link>
+  return (
+    <>
+      {/* <header className="header"> */}
+        <nav className="nav">
+          <Link to="/" className="nav__logo">
+            <img src={logo} className="nav__logoimg"></img>
+          </Link>
 
-        {/* <h2><Link to={`/user/${currentUser.id}`}>{currentUser?.username}</Link></h2> */}
-        {/* <h2>{currentUser?.username}</h2> */}
-          {currentUser ? (
-            <div>
-               {/* <h2>{currentUser?.username}</h2> */}
-               <h2><Link to={`/user/${currentUser.id}`}>{currentUser.username}</Link></h2>
-            <button onClick={logout}>Logout</button>
-            <Link to="/createdaycare"><button >Add Daycare</button></Link> 
-            </div>
-          ) : (
-            <Link className="link" to="/login">
-              <button>Log In</button>
-            </Link>
-          )}
+          <div className="nav__menu" onClick={() => setMenuOpen(!menuOpen)}>
+            <span className="nav__span"></span>
+            <span className="nav__span"></span>
+            <span className="nav__span"></span>
           </div>
-    )
+
+          <ul className={`nav__menuul ${menuOpen ? "nav__open" : ""}`}>
+            <li className="nav__list">
+             <NavLink to="/" className="nav__find nav__userlink">
+              <div className="nav__userwrap">
+                <img
+                  src={blueicon}
+                  alt="blueicon"
+                  className="nav__blueicon nav__icon"
+                ></img>
+                
+                  <div className="nav__findtext"> Find Child Care</div>
+                
+              </div>
+              </NavLink>
+            </li>
+
+            
+              {currentUser ? (
+                <>
+                <li className="nav__list">
+                  <NavLink to={`/user/${currentUser.id}`} className="nav__userlink">
+                  
+                  <div className="nav__userwrap">
+                    <img
+                      src={blueicon}
+                      alt="blueicon"
+                      className="nav__blueicon nav__icon"
+                    ></img>
+                        <div className="nav__userlog">
+                        {currentUser.first_name} {currentUser.last_name}
+                      </div>
+                   
+                  </div>
+                  
+                  </NavLink>
+                  </li>
+
+
+                   <li className="nav__list">
+                    <NavLink to="/" className="nav__userlink" onClick={logout}>
+                  <div className="nav__userwrap">
+                    <img
+                      src={orangeicon}
+                      alt="blueicon"
+                      className="nav__orangeicon nav__icon"
+                    ></img>
+                    <div  className="nav__userlog">
+                      Logout
+                    </div>
+                  </div>
+                  </NavLink>
+                  {/* <Link to="/createdaycare"><button >Add Daycare</button></Link>  move to footer */}
+                
+                </li>
+                </>
+              ) : (
+                <>
+                <li className="nav__list">
+                <NavLink to="/login"  className="nav__userlink">
+                  <div className="nav__userwrap">
+                    <img
+                      src={orangeicon}
+                      alt="blueicon"
+                      className="nav_blueicon"
+                    ></img>
+                      <div className="nav__userlog">Log In</div>
+                  </div>
+                  </NavLink>
+                  </li>
+                  <li className="nav__list">
+                    <NavLink to="/signup"  className="nav__userlink">
+                  <div className="nav__userwrap">
+                    <img
+                      src={orangeicon}
+                      alt="blueicon"
+                      className="nav_blueicon"
+                    ></img>
+                  
+                      <div className="nav__userlog">Sign Up</div>
+                   
+                  </div>
+                  </NavLink>
+                  </li>
+                  </>
+              )}
+            
+          </ul>
+        </nav>
+      {/* </header> */}
+    </>
+  );
 }

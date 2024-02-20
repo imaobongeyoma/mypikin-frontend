@@ -5,6 +5,7 @@ import { useNavigate } from "react-router";
 import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
 import userValidationSchema from "./signupvalidation";
+import Wrapper from "../Wrapper/Wrapper";
 
 export default function SignUp() {
   const SERVER_URL = process.env.REACT_APP_SERVER_URL;
@@ -47,11 +48,10 @@ export default function SignUp() {
   };
 
   return (
-    <div>
+    <Wrapper>
       <div>
         <h1>PROVIDE CARE - SIGNUP</h1>
       </div>
-      {/* <ToastContainer/> */}
       <form action="" className="form" onSubmit={upload}>
         <div className="form__fnwrap">
           <label htmlFor="first_name">Firstname</label>
@@ -146,6 +146,6 @@ export default function SignUp() {
           Sign Up
         </button>
       </form>
-    </div>
+      </Wrapper>
   );
 }

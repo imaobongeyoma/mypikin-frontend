@@ -7,6 +7,7 @@ import deleteicon from "../../assets/icons/delete_outline-24px.svg"
 import editicon from "../../assets/icons/edit-24px.svg"
 import "./ProviderList.scss";
 import sort from "../../assets/icons/sort-24px.svg";
+import Wrapper from "../Wrapper/Wrapper";
 
 export default function ProviderList() {
   const SERVER_URL = process.env.REACT_APP_SERVER_URL;
@@ -57,6 +58,7 @@ export default function ProviderList() {
   // };
   return (
     <>
+    <Wrapper>
       <section className="provider mobile">
         {providers.map((provider) => (
           <div className="provider__card" key={provider.id}>
@@ -163,6 +165,7 @@ export default function ProviderList() {
           }
         />
       )} */}
+      </Wrapper>
     </>
   );
 }

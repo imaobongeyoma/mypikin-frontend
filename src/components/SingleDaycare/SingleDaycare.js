@@ -8,6 +8,7 @@ import editicon from "../../assets/icons/edit-24px.svg";
 import sort from "../../assets/icons/sort-24px.svg";
 import { AuthContext } from "../Context/authContext";
 import { useContext } from "react";
+import Wrapper from "../Wrapper/Wrapper";
 
 export default function SelectedDaycare() {
   const SERVER_URL = process.env.REACT_APP_SERVER_URL;
@@ -114,7 +115,7 @@ export default function SelectedDaycare() {
     //   ))}
     // </div>
 
-    <div>
+    <Wrapper>
       <h1> Details</h1>
       {Object.entries(groupedDaycares).map(([daycare_id, daycare]) => (
         <div key={daycare_id}>
@@ -163,6 +164,6 @@ export default function SelectedDaycare() {
           )}
         </div>
       ))}
-    </div>
+   </Wrapper>
   );
 }

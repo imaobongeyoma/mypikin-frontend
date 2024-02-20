@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Wrapper from "../Wrapper/Wrapper";
 
 export default function DayCareList() {
   const SERVER_URL = process.env.REACT_APP_SERVER_URL;
@@ -40,6 +41,7 @@ const groupedDaycares = daycares.reduce((acc, daycare) => {
   }, {});
 
   return (
+    <Wrapper>
     <div>
       <h1>Daycares</h1>
       <div>
@@ -66,6 +68,7 @@ const groupedDaycares = daycares.reduce((acc, daycare) => {
       ))}
       
     </div>
+    </Wrapper>
    
   );
 }

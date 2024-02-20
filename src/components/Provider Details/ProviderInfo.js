@@ -8,6 +8,7 @@ import editicon from "../../assets/icons/edit-24px.svg";
 import sort from "../../assets/icons/sort-24px.svg";
 import { AuthContext } from "../Context/authContext";
 import { useContext } from "react";
+import Wrapper from "../Wrapper/Wrapper";
 
 export default function Provider() {
   const SERVER_URL = process.env.REACT_APP_SERVER_URL;
@@ -73,7 +74,7 @@ export default function Provider() {
     }
   };
   return (
-    <div>
+    <Wrapper>
       <h1> Details</h1>
 
       {Object.entries(groupedProviders).map(([provider_id, provider]) => (
@@ -108,6 +109,6 @@ export default function Provider() {
           )}
         </div>
       ))}
-    </div>
+    </Wrapper>
   );
 }

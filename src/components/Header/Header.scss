@@ -1,1 +1,86 @@
-//my header component scss
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/variables" as *;
+
+
+.nav {
+    padding: 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color: lightblue;
+    position: sticky;
+    top: 0;
+
+    @include tablet {
+        padding: 1rem 4rem;
+        flex-direction: row;
+        align-items: center;
+    }
+
+
+    &__list {
+        width: 100%;
+        text-align: center;
+
+        @include tablet {
+        text-align: right;
+        max-width: 20%;
+        }
+    }
+
+   &__userlink :not(.active):hover {
+        background-color: #ff914d;
+    }
+
+    &__menu {
+        display: flex;
+        position: absolute;
+        top: 1.4rem;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 2.25rem;
+        height: 2rem;
+        align-self: flex-end;
+        margin-right: 0rem;
+    
+
+        @include tablet {
+            display: none;
+        }
+    }
+    &__span {
+        height: 0.4rem;
+        width: 100%;
+        background-color:#ff914d;
+        border-radius: 0.2rem;
+    }
+
+    &__menuul {
+        flex-direction: column;
+        width: 100%;
+        padding-left: 0rem;
+        display: none;
+    
+        @include tablet {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+        }
+    }
+
+    &__open {
+        display:flex;
+    }
+    
+}
+
+.active {
+    background-color: #ff914d;
+}
+
+
+// nav ul li a:not(.active):hover {
+//     background-color: red ;
+// }

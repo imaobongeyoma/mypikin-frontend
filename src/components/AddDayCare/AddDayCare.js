@@ -4,6 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../Context/authContext";
 import { Link } from "react-router-dom";
+import Wrapper from "../Wrapper/Wrapper";
 
 export default function AddDayCare ()  {
     const  { currentUser } = useContext(AuthContext);
@@ -79,6 +80,7 @@ if (!currentUser) {
 return  (
 
     <>
+    <Wrapper>
     <form onSubmit={handleSubmit}>
 
        <h1> Add your Daycare</h1>
@@ -262,6 +264,7 @@ return  (
             <button type ="submit"> Add Daycare</button>
         </div>
         </form>
+        </Wrapper>
     
     </>
 )
