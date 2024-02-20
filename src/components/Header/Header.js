@@ -46,6 +46,7 @@ export default function Header() {
               {currentUser ? (
                 <>
                 <li className="nav__list">
+                
                   <NavLink to={`/user/${currentUser.id}`} className="nav__userlink">
                   
                   <div className="nav__userwrap">
@@ -65,12 +66,12 @@ export default function Header() {
 
 
                    <li className="nav__list">
-                    <NavLink to="/" className="nav__userlink" onClick={logout}>
+                    <NavLink to="/daycarelist" className="nav__userlink" onClick={logout}>
                   <div className="nav__userwrap">
                     <img
-                      src={orangeicon}
+                      src={blueicon}
                       alt="blueicon"
-                      className="nav__orangeicon nav__icon"
+                      className="nav__blueicon nav__icon"
                     ></img>
                     <div  className="nav__userlog">
                       Logout
@@ -87,9 +88,9 @@ export default function Header() {
                 <NavLink to="/login"  className="nav__userlink">
                   <div className="nav__userwrap">
                     <img
-                      src={orangeicon}
+                      src={blueicon}
                       alt="blueicon"
-                      className="nav_blueicon"
+                      className="nav__blueicon nav__icon"
                     ></img>
                       <div className="nav__userlog">Log In</div>
                   </div>
@@ -99,9 +100,9 @@ export default function Header() {
                     <NavLink to="/signup"  className="nav__userlink">
                   <div className="nav__userwrap">
                     <img
-                      src={orangeicon}
+                      src={blueicon}
                       alt="blueicon"
-                      className="nav_blueicon"
+                      className="nav_blueicon nav__icon"
                     ></img>
                   
                       <div className="nav__userlog">Sign Up</div>
