@@ -89,7 +89,8 @@ export default function EditDayCare() {
         headers: {
             "Content-Type": "multipart/form-data",
         }
-    });
+    })
+
    
     } catch (error) {
       console.error("Error editing daycare:", error);

@@ -9,7 +9,7 @@ import Wrapper from "../Wrapper/Wrapper";
 export default function AddDayCare ()  {
     const  { currentUser } = useContext(AuthContext);
     const [formData, setFormData] = useState ({
-        provider_id: currentUser.id,
+        provider_id: "",
         name: "",
         daycare_description: "",
     provider_about: "",

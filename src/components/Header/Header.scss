@@ -4,7 +4,7 @@
 
 
 .nav {
-    padding: 1rem 1rem;
+    padding: 1rem 1rem 0rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -23,6 +23,12 @@
         padding: 1rem 7.3rem;
     }
 
+
+    &__logoimg{
+        height: 65px;
+        width:65px;
+
+    }
 
     &__list {
         width: 100%;

@@ -7,6 +7,8 @@ import axios from "axios";
 import userloginValidationSchema from "./userloginValidationSchema";
 import { AuthContext } from "../Context/authContext";
 import Wrapper from "../Wrapper/Wrapper";
+import "../SignUp/SignUp-login.scss"
+import doubleicon from "../../assets/icons/doubleicon.png"
 
 // import { AuthContext } from "../Context/authContext";
 
@@ -66,29 +68,36 @@ export default function Login() {
     
      <Wrapper>
        
-        <div>
-        <h1>WELCOME BACK - LOG IN</h1>
+        <div className="sform">
+        <div className="sform__heading">
+        <h1 className="sform__title"> Welcome!</h1>
       </div>
+      <div className="sform__ctawrap">
+          <img src={doubleicon} alt="doubleicon" className="sform__icon"></img>
+          <p className="sform__text">Log into your account</p>
+        </div>
+      
      
       <form action="" className="form" onSubmit={handleSubmit}>
-            <div className ="form__usernamewrap">
-        <label htmlFor="username">Username</label>
-        <input type="text" placeholder="Enter Username" name="username" className="form__username" id="username" value={inputs.username} onChange={handleChange}  />
+            <div className ="form__usernamewrap form__inputwrap">
+        <label htmlFor="username" className="form__label">Username</label>
+        <input type="text" placeholder="Enter Username" name="username" className="form__username form__field" id="username" value={inputs.username} onChange={handleChange}  />
    
         </div>
 
-        <div className ="form__passwordwrap">
-        <label htmlFor="password">Password</label>
-        <input type="password" placeholder="Enter Password" name="password" className="form__password" id="password" value={inputs.password} onChange={handleChange}  />
+        <div className ="form__passwordwrap form__inputwrap">
+        <label htmlFor="password" className="form__label">Password</label>
+        <input type="password" placeholder="Enter Password" name="password" className="form__password form__field" id="password" value={inputs.password} onChange={handleChange}  />
        
         </div>
-        <div className="form__newuser"> <p className="form__newusertext"> New Provider ?</p> 
-        {/* <p className="form__login" onClick={() => navigate("/signup")}>Sign Up</p> */}
-        <button className="form__signup" onClick={() => navigate("/signup")}>Signup</button>
-        </div>
-        {/* <button className="form__signup" onClick={() => navigate("/signup")}>Log In</button> */}
+      
         <button className="form__submit" type="submit">Log In</button>
+        <div className="form__existing">
+        
+          <p className="form__accowner">New Provider? <span onClick={() => navigate("/signup")} className="form__signup">Sign up</span></p>
+        </div>
       </form>
+      </div>
       </Wrapper>
   );
 }

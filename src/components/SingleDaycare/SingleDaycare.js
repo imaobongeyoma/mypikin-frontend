@@ -9,6 +9,7 @@ import sort from "../../assets/icons/sort-24px.svg";
 import { AuthContext } from "../Context/authContext";
 import { useContext } from "react";
 import Wrapper from "../Wrapper/Wrapper";
+import blueicon from "../../assets/icons/blueicon.png";
 
 export default function SelectedDaycare() {
   const SERVER_URL = process.env.REACT_APP_SERVER_URL;
@@ -116,17 +117,41 @@ export default function SelectedDaycare() {
     // </div>
 
     <Wrapper>
-      <h1> Details</h1>
+      
       {Object.entries(groupedDaycares).map(([daycare_id, daycare]) => (
         <div key={daycare_id}>
-          <p>First Name: {daycare.first_name}</p>
-          <p>Last Name : {daycare.last_name}</p>
+          <div>
+          <h1>{daycare.name}</h1>
+          <div>
+          <img src={daycare.daycarephotos[0]}  width={250} height={250}></img>
+          </div>
+          <div>
+           <p> Price: {daycare.price}</p> 
+            <p> Hours: {daycare.hours_start}am to {daycare.hours_close}pm</p>
+            <button>Contact Us!</button>
+          </div>
+          </div>
+
+          
+          <div>
+          <h3>Program Director</h3>
+          <p>{daycare.first_name} {daycare.last_name}</p>
+          <img src={`${SERVER_URL}${daycare.profile_image}`} width={100} height={100}></img>
+          {daycare.background_check_done === "Yes" && (
+            <div>
+            <p>Background Check Approved</p>
+            <img src={blueicon}></img>
+            </div>
+          )}
+          </div> 
+          <div>
           {currentUser && currentUser.role === "Admin" && (
             <div>
               <img src={editicon} alt="editicon"></img>
               <img onClick={DeleteUser} src={deleteicon} alt="editicon"></img>
             </div>
           )}
+          </div> 
           {currentUser &&
             currentUser.role !== "Admin" &&
             currentUser.first_name === daycare.first_name && (
@@ -135,8 +160,14 @@ export default function SelectedDaycare() {
               </div>
             )}
 
+          <div>
+            <h3>About {daycare.name}</h3>
+            <p>{daycare.daycare_description}</p>
+          </div>
+
           {daycare.daycarephotos &&
             daycare.daycarephotos.map((photo, index) => (
+              index !== 0 &&
               <img
                 key={index}
                 src={photo}
@@ -149,12 +180,12 @@ export default function SelectedDaycare() {
             currentUser.role !== "Admin" &&
             currentUser.first_name === daycare.first_name && (
               <div>
-                <img src={editicon} alt="editicon"></img>
+                <img src={editicon} alt="editicon" onClick={() => navigate(`/daycares/${daycare.daycare_id}/edit`)}></img>
               </div>
             )}
           {currentUser && currentUser.role === "Admin" && (
             <div>
-              <img src={editicon} alt="editicon"></img>
+              <img src={editicon} alt="deleteicon"></img>
               <img
                 onClick={DeleteDaycare}
                 src={deleteicon}

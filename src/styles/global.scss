@@ -15,7 +15,12 @@ body{
     margin: 0;
     // font-family: "KG Penmanship", Geneva, Tahoma, sans-serif;
     font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: #f6f7f1;
+    // background-color: #f6f7f1;
+    background-color: white;
+
+    @include tablet {
+      background-color: white;
+    }
 }
 
 
