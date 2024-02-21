@@ -48,11 +48,10 @@ export default function Header() {
             </li>
 
             
-              {currentUser && (
+              {currentUser ? (
                 <>
-                 {currentUser.role === "Provider" && (
                 <li className="nav__list" onClick={handleMenuItemClick}>
-               
+                
                   <NavLink to={`/user/${currentUser.id}`} className="nav__userlink">
                   
                   <div className="nav__userwrap" >
@@ -69,28 +68,6 @@ export default function Header() {
                   
                   </NavLink>
                   </li>
-                  )}
-                  {currentUser.role ==="Admin" && (
-
-                  <li className="nav__list" onClick={handleMenuItemClick}>
-                
-                  <NavLink to={`/`} className="nav__userlink">
-                  
-                  <div className="nav__userwrap" >
-                    <img
-                      src={iconSrc}
-                      alt="blueicon"
-                      className="nav__blueicon nav__icon"
-                    ></img>
-                        <div className="nav__userlog">
-                        {currentUser.first_name} {currentUser.last_name}
-                      </div>
-                   
-                  </div>
-                  
-                  </NavLink>
-                  </li>
-                )}
 
 
                    <li className="nav__list">
@@ -110,9 +87,7 @@ export default function Header() {
                 
                 </li>
                 </>
-              )} 
-              
-             {!currentUser &&  (
+              ) : (
                 <>
                 <li className="nav__list">
                 <NavLink to="/login"  className="nav__userlink">

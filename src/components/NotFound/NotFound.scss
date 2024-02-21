@@ -1,1 +1,11 @@
-//not found component scss
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/variables" as *;
+
+button {
+    height: 2.5rem;
+    background-color: $orange;
+    border: none;
+    border-radius: 10px;
+    color: white;
+}

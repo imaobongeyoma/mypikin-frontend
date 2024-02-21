@@ -1,0 +1,167 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/variables" as *;
+
+.singled {  
+
+  &__topwrapper {
+    padding: 0rem 1rem 2rem;
+    background-color: $white;
+
+    @include tablet {
+        margin: 0rem 2rem 2rem;
+    }
+
+    @include desktop {
+        margin: 0rem 10rem 2rem;
+    }
+  }
+  &__imgcont {
+    width: 100%;
+    height: 30vh;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__dpwrap {
+    @include tablet {
+        display:flex;
+        justify-content: space-between;
+        border-bottom: 2px solid $green;
+    }
+  }
+
+  &__namewrap {
+    display: flex;
+  }
+  &__nameicon {
+    height: 1.75rem;
+    width: 1.5rem;
+    margin-top: 0.5rem;
+  }
+
+  &__name {
+    margin: 0.5rem 0rem 0rem 0.5rem;
+    // font-size: 1.5rem;
+  }
+
+  &__details {
+    margin-bottom: 1rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid $green;
+    @include tablet {
+        border-bottom: none;
+    }
+  }
+
+  &__detail {
+    font-weight: 200;
+    // color: $green;
+  }
+
+  &__contactcta {
+    width: 7rem;
+    font-size: 1rem;
+  }
+
+  &__profile {
+    border-bottom: 2px solid $green;
+    padding-bottom: 2rem;
+    @include tablet {
+        border-bottom: none;
+    }
+  }
+
+  &__profdetails {
+    font-weight: bold;
+    margin: 0rem 0rem 1rem 0rem;
+  }
+
+  &__director {
+    margin-top: 0.5rem;
+  }
+
+  &__bgcheck {
+    display: flex;
+  }
+
+  &__bgimage {
+    width: 30px;
+    height: 30px;
+    margin-top: -0.2rem;
+  }
+
+  &__profcont {
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+    margin-bottom: 1rem;
+  }
+
+  &__profileimage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  &__bottomdetails {
+    border-bottom: 2px solid $green;
+    padding-bottom: 2rem;
+  }
+
+  &__photos {
+    border-bottom: 2px solid $green;
+    padding-bottom: 2rem;
+  }
+
+  &__photoswrap {
+    display: flex;
+    flex-direction: column;
+    @include tablet {
+      flex-direction: row;
+      justify-content: flex-start;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @include desktop {
+      flex-direction: row;
+      justify-content: flex-start;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__photocont {
+    width: 100%;
+    height: 15rem;
+    background-color: white;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    box-shadow: 0 5px 10px 0 rgba(7, 101, 104, 0.1);
+
+    @include tablet {
+      width: calc(33.33% - 0.67rem);
+      border-bottom: 2rem;
+    }
+
+    @include desktop {
+      width: calc(25% - 0.75rem);
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 5px 10px 0 rgba(7, 101, 104, 0.1);
+  }
+}

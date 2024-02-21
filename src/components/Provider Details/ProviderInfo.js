@@ -41,6 +41,8 @@ export default function Provider() {
     return <div>Loading...</div>;
   }
 
+
+
   const groupedProviders = selectedProvider.reduce((acc, provider) => {
     if (!acc[provider.provider_id]) {
       acc[provider.provider_id] = {
@@ -54,15 +56,6 @@ export default function Provider() {
     }
     return acc;
   }, {});
-
-  //   const DeleteDaycare = async () => {
-  //     try {
-  //       const res = await axios.delete(`${SERVER_URL}/daycares/${daycareid}`);
-  //       setSelectedProvider(res.data);
-  //     } catch (err) {
-  //       console.err(err);
-  //     }
-  //   };
 
   const DeleteUser = async () => {
     try {

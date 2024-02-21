@@ -109,7 +109,7 @@ export default function EditDayCare() {
   return (
     <>
     <Wrapper>
-      {currentUser.id === formData.provider_id ? (
+      {currentUser.id === formData.provider_id || currentUser.role === "Admin" ? (
         <form onSubmit={handleSubmit}>
           <h1> Edit your Daycare</h1>
           <div>

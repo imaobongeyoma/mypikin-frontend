@@ -77,6 +77,16 @@ if (!currentUser) {
   )
   }
 
+
+  if (currentUser && currentUser.role === "Admin") {
+    return (
+        <main> 
+            Administrators cannot create daycare.
+            <Link to={`/user/${currentUser.id}`}> <div>Return to admin view</div></Link>
+        </main>
+    )
+    }
+
 return  (
 
     <>

@@ -30,16 +30,23 @@ export default function Login() {
     const handleSubmit =  async (event) => {
         event.preventDefault();
         try {
-           await login(inputs)
+           await login(inputs);
+           if (currentUser && currentUser.role === "Admin") {
+            navigate ("/");
+           } else if (currentUser) {
             navigate(`/user/${currentUser.id}`)
+           }
+            
         } catch (err) {
         }
       }
       
       useEffect(() => {
-        if (currentUser) {
-          navigate(`/user/${currentUser.id}`);
-        }
+        if (currentUser && currentUser.role === "Admin") {
+          navigate ("/");
+         } else if (currentUser) {
+          navigate(`/user/${currentUser.id}`)
+         }
       }, [currentUser, navigate]);
               
  

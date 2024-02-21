@@ -3,18 +3,25 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import deleteicon from "../../assets/icons/delete_outline-24px.svg";
-import editicon from "../../assets/icons/edit-24px.svg";
+// import deleteicon from "../../assets/icons/delete_outline-24px.svg";
+// import editicon from "../../assets/icons/edit-24px.svg";
 import sort from "../../assets/icons/sort-24px.svg";
 import { AuthContext } from "../Context/authContext";
 import { useContext } from "react";
 import Wrapper from "../Wrapper/Wrapper";
 import blueicon from "../../assets/icons/blueicon.png";
+import doubleicon from "../../assets/icons/doubleicon.png";
+import orangeicon from "../../assets/icons/orangeicon.png";
+import deleteicon from "../../assets/icons/deleteicon.png";
+import editicon from "../../assets/icons/editicon.png";
+
+import "./SingleDaycare.scss";
 
 export default function SelectedDaycare() {
   const SERVER_URL = process.env.REACT_APP_SERVER_URL;
   const [selectedDaycare, setSelectedDaycare] = useState([]);
   const [user, setUser] = useState([]);
+  const [showContacts, setShowContacts] = useState(false);
 
   const { daycareid } = useParams();
   //   const { userid } = useParams();
@@ -28,7 +35,6 @@ export default function SelectedDaycare() {
       const response = await axios.get(`${SERVER_URL}/daycares/${id}/info`);
       setSelectedDaycare(response.data);
       setUser(response.data[0].provider_id);
-      console.log(response.data);
     } catch (error) {
       console.error("Error fetching daycare details:", error);
     }
@@ -42,19 +48,9 @@ export default function SelectedDaycare() {
     return <div>Loading...</div>;
   }
 
-  // const groupedDaycares = selectedDaycare.reduce((acc, daycare) => {
-  //   if (!acc[daycare.daycare_id]) {
-  //     acc[daycare.daycare_id] = {
-  //       providerFirstName: daycare.first_name,
-  //       providerid: daycare.provider_id,
-  //       images: [`${SERVER_URL}${daycare.daycarephoto}`],
-  //       providerLastName: daycare.last_name
-  //     };
-  //   } else {
-  //     acc[daycare.daycare_id].images.push(`${SERVER_URL}${daycare.daycarephoto}`);
-  //   }
-  //   return acc;
-  // }, {});
+  const toggleContacts = () => {
+    setShowContacts(!showContacts);
+  };
 
   const groupedDaycares = selectedDaycare.reduce((acc, daycare) => {
     if (!acc[daycare.daycare_id]) {
@@ -74,6 +70,7 @@ export default function SelectedDaycare() {
     try {
       const res = await axios.delete(`${SERVER_URL}/daycares/${daycareid}`);
       setSelectedDaycare(res.data);
+      navigate("/daycarelist");
     } catch (err) {
       console.err(err);
     }
@@ -89,112 +86,175 @@ export default function SelectedDaycare() {
     }
   };
   return (
-    //  <div>
-    //    <h1> Details</h1>
-    //   {Object.entries(groupedDaycares).map(([daycare_id, { providerFirstName, images, providerLastName, providerid }]) => (
-    //     <div key={daycare_id}>
-    //       <p>First Name: {providerFirstName}</p>
-    //       <p>Last Name : {providerLastName}</p>
-    //       {currentUser && currentUser.role === "Admin" && (
-    //          <div><img  src= {editicon} alt="editicon"></img><img onClick={DeleteUser} src= {deleteicon} alt="editicon"></img></div>
-    //       )}
-    //       {currentUser && currentUser.first_name === providerFirstName && (
-    //           <div><img src= {editicon} alt="editicon"></img></div>
-    //       )}
-
-    //       {images.map((image, index) => (
-    //         <img key={index} src={image} alt={`Daycare Photo ${index}`} width={250} height={250} />
-    //       ))}
-    //       {currentUser &&  currentUser.first_name === providerFirstName && (
-    //           <div><img src= {editicon} alt="editicon"></img></div>
-    //       )}
-    //       {currentUser && currentUser.role === "Admin" && (
-    //           <div><img  src= {editicon} alt="editicon"></img><img onClick= {DeleteDaycare}src= {deleteicon} alt="editicon"></img></div>
-    //       )}
-
-    //     </div>
-    //   ))}
-    // </div>
-
     <Wrapper>
-      
       {Object.entries(groupedDaycares).map(([daycare_id, daycare]) => (
-        <div key={daycare_id}>
-          <div>
-          <h1>{daycare.name}</h1>
-          <div>
-          <img src={daycare.daycarephotos[0]}  width={250} height={250}></img>
+        <div key={daycare_id} className="singled">
+         
+          <div className="singled__imgcont">
+            <img
+              src={daycare.daycarephotos[0]}
+              className="singled__img"
+            ></img>
           </div>
-          <div>
-           <p> Price: {daycare.price}</p> 
-            <p> Hours: {daycare.hours_start}am to {daycare.hours_close}pm</p>
-            <button>Contact Us!</button>
-          </div>
-          </div>
-
+          <div className="singled__topwrapper">
           
-          <div>
-          <h3>Program Director</h3>
-          <p>{daycare.first_name} {daycare.last_name}</p>
-          <img src={`${SERVER_URL}${daycare.profile_image}`} width={100} height={100}></img>
-          {daycare.background_check_done === "Yes" && (
-            <div>
-            <p>Background Check Approved</p>
-            <img src={blueicon}></img>
-            </div>
-          )}
-          </div> 
-          <div>
-          {currentUser && currentUser.role === "Admin" && (
-            <div>
-              <img src={editicon} alt="editicon"></img>
-              <img onClick={DeleteUser} src={deleteicon} alt="editicon"></img>
-            </div>
-          )}
-          </div> 
-          {currentUser &&
-            currentUser.role !== "Admin" &&
-            currentUser.first_name === daycare.first_name && (
-              <div>
-                <img src={editicon} alt="editicon"></img>
-              </div>
-            )}
-
-          <div>
-            <h3>About {daycare.name}</h3>
-            <p>{daycare.daycare_description}</p>
-          </div>
-
-          {daycare.daycarephotos &&
-            daycare.daycarephotos.map((photo, index) => (
-              index !== 0 &&
+          <div className="singled__dpwrap">
+          <div className="singled__details">
+            <div className="singled__namewrap">
               <img
-                key={index}
-                src={photo}
-                alt={`Daycare Photo ${index}`}
-                width={250}
-                height={250}
-              />
-            ))}
-          {currentUser &&
+                src={doubleicon}
+                alt="mini-doubleicon"
+                className="singled__nameicon"
+              ></img>
+
+              {/* <div className="singled__topdetails"></div> */}
+              <h2 className="singled__name">{daycare.name}</h2>
+            </div>
+
+            <h3 className="singled__price">
+              
+              Price:
+              <span className="singled__detail"> ${daycare.price} per day</span>
+            </h3>
+            <h3 className="singled__hours">
+              
+              Hours:
+              <span className="singled__detail"> {daycare.hours_start}am to {daycare.hours_close}pm
+              </span>
+            </h3>
+            <h3 className="singled__location">
+              
+              Location: <span className="singled__detail">{daycare.city}</span>
+            </h3>
+            <button className="singled__contactcta" onClick={toggleContacts}>
+              Contact Us!
+            </button>
+            {showContacts && (
+              <div className="singled__contacts">
+                <p className="singled__email">
+                  Please reach us at
+                  <span className="singled__detail">{daycare.email}</span>
+                </p>
+                <p className="singled__phone">
+                  Our phone number is
+                  <span className="singled__detail"> 
+                    {daycare.phone_number}
+                  </span>
+                </p>
+                <p>
+                  We're looking forward to hearing from you and taking care of
+                  your little one.
+                </p>
+              </div>
+            )}
+
+{currentUser &&
             currentUser.role !== "Admin" &&
             currentUser.first_name === daycare.first_name && (
               <div>
-                <img src={editicon} alt="editicon" onClick={() => navigate(`/daycares/${daycare.daycare_id}/edit`)}></img>
+                <img
+                  src={editicon}
+                  alt="editicon"
+                  title="Edit daycare info"
+                  onClick={() =>
+                    navigate(`/daycares/${daycare.daycare_id}/edit`)
+                  }
+                ></img>
               </div>
             )}
           {currentUser && currentUser.role === "Admin" && (
             <div>
-              <img src={editicon} alt="deleteicon"></img>
+              <img src={editicon} alt="editicon" title="Edit daycare info" onClick={() =>
+                    navigate(`/daycares/${daycare.daycare_id}/edit`)
+                  }></img>
               <img
                 onClick={DeleteDaycare}
                 src={deleteicon}
-                alt="editicon"
+                alt="deleteicon"
+                title="Delete daycare"
               ></img>
             </div>
           )}
+          </div>
+
+          <div className="singled__profile">
+            <h2 className="singled__director">Program Director Details</h2>
+            <div className="singled__profcont">
+              <img
+                src={`${SERVER_URL}${daycare.profile_image}`}
+                className="singled__profileimage"
+              ></img>
+            </div>
+
+            <h3 className="singled__profdetails">
+              {daycare.first_name} {daycare.last_name}
+            </h3>
+
+            {daycare.background_check_done === "Yes" ? (
+              <div className="singled__bgcheck">
+                <h3 className="singled__profdetails">
+                  Background Check Approved
+                </h3>
+                <img src={blueicon} className="singled__bgimage"></img>
+              </div>
+            ) : (
+              <div className="singled__bgcheck">
+                <p className="singled__profdetails">
+                  Background Check Not Approved
+                </p>
+                <img src={orangeicon} className="singled__bgimage"></img>
+              </div>
+            )}
+
+            <div>
+              {currentUser && currentUser.role === "Admin" && (
+                <div className="singled__edit-del">
+                  <img src={editicon} alt="editicon" title="Edit provider details"></img>
+                  <img
+                    onClick={DeleteUser}
+                    src={deleteicon}
+                    alt="editicon"
+                    title="Delete provider"
+                  ></img>
+                </div>
+              )}
+            </div>
+            {currentUser &&
+              currentUser.role !== "Admin" &&
+              currentUser.first_name === daycare.first_name && (
+                <div className="singled__edit-del">
+                  <img src={editicon} alt="editicon" title="Edit provider details"></img>
+                </div>
+              )}
+          </div>
+          </div>
+
+          <div className="singled__bottomdetails">
+            <h2 className="singled__about">More About {daycare.name}</h2>
+            <p className="singled__description">{daycare.daycare_description}</p>
+          </div>
+          <div className="singled__photos">
+          <h2 className="singled__photostitle">Photos</h2>
+          <div className="singled__photoswrap">
+          {daycare.daycarephotos &&
+            daycare.daycarephotos.map(
+              (photo, index) =>
+                index !== 0 && (
+                 <div className="singled__photocont" key={index}>
+                  <img className="singled__photo"
+                    key={index}
+                    src={photo}
+                    alt={`Daycare Photo ${index}`}
+                    width={250}
+                    height={250}
+                  />
+                </div>)
+            )}
+            </div>
+            </div>
+            </div>
         </div>
       ))}
-   </Wrapper>
+    </Wrapper>
   );
 }

@@ -57,7 +57,7 @@ export default function DayCareList() {
               if (searchTerm === "") {
                 return true;
               } else if (
-                daycare.city.toLowerCase().includes(searchTerm.toLowerCase())
+                daycare.city.toLowerCase().startsWith(searchTerm.toLowerCase())
               ) {
                 return true;
               }
@@ -92,6 +92,25 @@ export default function DayCareList() {
                 </p>
               </div>
             ))}
+
+            {Object.values(groupedDaycares)
+            .filter((daycare) => {
+              if (searchTerm === "") {
+                return true;
+              } else if (
+                daycare.city.toLowerCase().startsWith(searchTerm.toLowerCase())
+              ) {
+                return true;
+              }
+              return false;
+            })
+            .filter((daycare) => daycare.background_check_done === "Yes").length === 0 && (
+              <div className="daycare__notfound">
+              We don't currently have daycares in your searched location but we're adding new daycares everyday. Please keep an eye out for new additions in your city
+               </div>
+            )
+            
+            }
         </div>
       </div>
     </Wrapper>

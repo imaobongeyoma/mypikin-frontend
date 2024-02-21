@@ -95,6 +95,9 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
+  // box-shadow: 0 5px 10px 0 rgba(25, 37, 84, 0.1);
+  border-radius: 15px;
+  
 
   @include tablet {
     width: calc(33.33% - 0.67rem);
@@ -110,6 +113,7 @@
     height: 15rem;
     background-color: white;
     border-radius: 15px;
+    box-shadow: 0 5px 10px 0 rgba(7, 101, 104, 0.1);
   }
 
   &__cover {
@@ -117,6 +121,7 @@
     height: 100%;
     object-fit: cover;
     border-radius: 15px;
+    box-shadow: 0 5px 10px 0 rgba(7, 101, 104, 0.1);
   }
 
   &__namewrap {
@@ -132,10 +137,21 @@
   &__name {
     margin-top: 0.5rem;
     margin-left: 0.5rem;
+    font-weight: bold;
   }
 
   &__price,
   &__hours {
     margin-top: 0rem;
   }
+
+  &__notfound {
+    margin-top: 1rem;
+    text-align: left;
+    font-size: 1.4rem;
+    line-height: 2rem;
+    
+  }
+ 
 }
+
