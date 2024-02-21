@@ -1,10 +1,7 @@
 import React from "react";
 import { useState } from "react";
-// import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
-import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
-import userValidationSchema from "./signupvalidation";
 import Wrapper from "../Wrapper/Wrapper";
 import doubleicon from "../../assets/icons/doubleicon.png"
 import "./SignUp-login.scss"
@@ -23,7 +20,7 @@ export default function SignUp() {
   const [msg, setMsg] = useState("");
   const navigate = useNavigate();
 
-  //
+  
   const upload = (e) => {
     e.preventDefault();
     const formData = new FormData();

@@ -1,16 +1,10 @@
 import React, { useContext } from "react";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router";
-import { toast, ToastContainer } from "react-toastify";
-import axios from "axios";
-import userloginValidationSchema from "./userloginValidationSchema";
 import { AuthContext } from "../Context/authContext";
 import Wrapper from "../Wrapper/Wrapper";
 import "../SignUp/SignUp-login.scss"
 import doubleicon from "../../assets/icons/doubleicon.png"
-
-// import { AuthContext } from "../Context/authContext";
 
 export default function Login() {
   const { currentUser } = useContext(AuthContext);
@@ -20,7 +14,6 @@ export default function Login() {
         password: "",
     };
     
-    // const { login } = useContext(AuthContext);
     const [inputs, setInputs] = useState(initialState)
     const [err, setErr] = useState({});
     const { login } = useContext(AuthContext)
@@ -30,7 +23,6 @@ export default function Login() {
     const handleChange = (e) => {
 
       setInputs(prev => ({...prev, [e.target.name]: e.target.value}));
-         // Clearing the error message when user starts typing
 
     };
 
@@ -39,24 +31,11 @@ export default function Login() {
         event.preventDefault();
         try {
            await login(inputs)
-          // if (response.status === 200) {
-            // navigate(`/user/${currentUser.id}`)
-            // window.location.href ="/";
+            navigate(`/user/${currentUser.id}`)
         } catch (err) {
-          // setErr(err.response.data)
         }
       }
       
-
-      // if (currentUser) {
-      //   return (
-      //       <main> 
-      //           You are logged in - redirecting ...
-      //           <Link to={`/user/${currentUser.id}`}> View Your Profile</Link>
-      
-      //       </main>
-      //   )
-      //   }
       useEffect(() => {
         if (currentUser) {
           navigate(`/user/${currentUser.id}`);
@@ -70,7 +49,7 @@ export default function Login() {
        
         <div className="sform">
         <div className="sform__heading">
-        <h1 className="sform__title"> Welcome!</h1>
+        <h1 className="sform__title"> Welcome</h1>
       </div>
       <div className="sform__ctawrap">
           <img src={doubleicon} alt="doubleicon" className="sform__icon"></img>

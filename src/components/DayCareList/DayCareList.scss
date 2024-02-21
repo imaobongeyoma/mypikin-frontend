@@ -1,1 +1,141 @@
-//my daycare component scss
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/variables" as *;
+
+.home {
+  padding: 1rem 1rem 2rem;
+
+  @include tablet {
+    margin: 0rem 0rem;
+  }
+
+  @include desktop {
+    margin: 0rem 0rem;
+  }
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  top: 10%;
+
+  &__sicon {
+    position: absolute;
+    top: 9%;
+    left: 3%;
+
+    @include tablet {
+      top: 10%;
+      left: 22%;
+    }
+
+    @include desktop {
+      top: 10%;
+      left: 21%;
+    }
+  }
+
+  &__box {
+    height: 2rem;
+    border-radius: 15px;
+    outline: none;
+    border: 2px solid $aqua;
+    width: 100%;
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus::placeholder {
+      color: transparent;
+    }
+
+    @include tablet {
+      height: 2rem;
+      width: 60%;
+      padding-left: 2.5rem;
+    }
+  }
+
+  ::placeholder {
+    color: $placeholder;
+  }
+}
+
+.daycarewrapper {
+  display: flex;
+  flex-direction: column;
+
+  @include tablet {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  @include desktop {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+}
+
+.daycarewrapper::after {
+  @include tablet {
+    content: "";
+    flex-grow: 9999;
+  }
+}
+
+.daycare {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+
+  @include tablet {
+    width: calc(33.33% - 0.67rem);
+    border-bottom: 2rem;
+  }
+
+  @include desktop {
+    width: calc(25% - 0.75rem);
+  }
+
+  &__imagewrap {
+    width: 100%;
+    height: 15rem;
+    background-color: white;
+    border-radius: 15px;
+  }
+
+  &__cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+  }
+
+  &__namewrap {
+    display: flex;
+  }
+
+  &__nameicon {
+    height: 1.75rem;
+    width: 1.5rem;
+    margin-top: 0.1rem;
+  }
+
+  &__name {
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+  }
+
+  &__price,
+  &__hours {
+    margin-top: 0rem;
+  }
+}
