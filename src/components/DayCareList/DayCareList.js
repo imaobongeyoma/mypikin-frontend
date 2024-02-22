@@ -17,7 +17,6 @@ export default function DayCareList() {
     try {
       const response = await axios.get(`${SERVER_URL}/daycares`);
       setDaycares(response.data);
-      console.log(response.data);
     } catch (error) {
       console.error("Error fetching fullList of daycares:", error);
     }
@@ -64,6 +63,25 @@ export default function DayCareList() {
               return false;
             })
             .filter((daycare) => daycare.background_check_done === "Yes")
+            .length === 0 && (
+            <div className="daycare__notfound">
+              We don't currently have daycares in your searched location but
+              we're adding new daycares everyday. Please keep an eye out for new
+              additions in your city
+            </div>
+          )}
+          {Object.values(groupedDaycares)
+            .filter((daycare) => {
+              if (searchTerm === "") {
+                return true;
+              } else if (
+                daycare.city.toLowerCase().startsWith(searchTerm.toLowerCase())
+              ) {
+                return true;
+              }
+              return false;
+            })
+            .filter((daycare) => daycare.background_check_done === "Yes")
             .map((daycare) => (
               <div
                 key={daycare.id}
@@ -92,25 +110,6 @@ export default function DayCareList() {
                 </p>
               </div>
             ))}
-
-            {Object.values(groupedDaycares)
-            .filter((daycare) => {
-              if (searchTerm === "") {
-                return true;
-              } else if (
-                daycare.city.toLowerCase().startsWith(searchTerm.toLowerCase())
-              ) {
-                return true;
-              }
-              return false;
-            })
-            .filter((daycare) => daycare.background_check_done === "Yes").length === 0 && (
-              <div className="daycare__notfound">
-              We don't currently have daycares in your searched location but we're adding new daycares everyday. Please keep an eye out for new additions in your city
-               </div>
-            )
-            
-            }
         </div>
       </div>
     </Wrapper>

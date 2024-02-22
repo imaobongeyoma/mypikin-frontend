@@ -6,6 +6,7 @@ import { AuthContext } from "../Context/authContext";
 import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Wrapper from "../Wrapper/Wrapper";
+import "./EditDayCare.scss"
 
 export default function EditDayCare() {
   const { id } = useParams();
@@ -55,8 +56,7 @@ export default function EditDayCare() {
         province: response.data.province,
         country: response.data.country,
       });
-      //   setUser(response.data[0].provider_id);
-      console.log(response.data);
+    
     } catch (error) {
       console.error("Error fetching daycare details:", error);
     }
@@ -109,179 +109,247 @@ export default function EditDayCare() {
   return (
     <>
     <Wrapper>
+
       {currentUser.id === formData.provider_id || currentUser.role === "Admin" ? (
-        <form onSubmit={handleSubmit}>
-          <h1> Edit your Daycare</h1>
-          <div>
-            <label>
-              Provider Id:
-              <input
-                type="text"
-                name="provider_id"
-                value={formData.provider_id}
-                onChange={handleChange}
-                readOnly={true}
-              />
-            </label>
+        <div className="sform">
+        <div className="sform__heading">
+            <h1 className="sform__title">Edit Daycare</h1>
           </div>
 
-          <div>
-            <label>
-              Daycare Name:
-              <input
-                type="text"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-              />
-            </label>
-          </div>
-          <div>
-            <label>
-              Daycare Description:
-              <input
-                type="text"
-                name="daycare_description"
-                value={formData.daycare_description}
-                onChange={handleChange}
-              />
-            </label>
-          </div>
-          <div>
-            <label>
-              About the Provider :
-              <input
-                type="text"
-                name="provider_about"
-                value={formData.provider_about}
-                onChange={handleChange}
-              />
-            </label>
-          </div>
+          <form onSubmit={handleSubmit} className="form">
 
-          <div>
-            <label>
-              Daycare Tag Line :
-              <input
-                type="text"
-                name="tag_line"
-                value={formData.tag_line}
-                onChange={handleChange}
-              />
-            </label>
-          </div>
+      <h2 className="sform__subheads"> Daycare Details </h2>
+      <div className="form__stylewrap">
+        <div className ="form__inputwrap">
+    <label className="form__label" htmlFor="id">
+       Provider Id:
+       </label>
+        <input
+          type="text"
+          name="provider_id"
+          id="id"
+          value={formData.provider_id}
+          className="form__field"
+          onChange={handleChange}
+          readOnly={true}
+        />
+      
+        </div>
 
-          <div>
-            <label>
-              Price per day :
-              <input
-                type="text"
-                name="price"
-                value={formData.price}
-                onChange={handleChange}
-              />
-            </label>
-          </div>
+        <div className ="form__inputwrap">
+      <label className="form__label" htmlFor="name">
+        Daycare Name:</label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          value={formData.name}
+          className="form__field"
+          onChange={handleChange}
+        />
+        
+        </div>
+        </div>
 
-          <div>
-            <label>
-              Opening Time :
-              <input
-                type="text"
-                name="hours_start"
-                value={formData.hours_start}
-                onChange={handleChange}
-              />
-            </label>
-          </div>
+        <div className="form__stylewrap">
+        <div className ="form__inputwrap" >
+        <label className="form__label" htmlFor="description">
+        Daycare Description:</label>
+        <textarea
+          name="daycare_description"
+          id="description"
+          value={formData.daycare_description}
+          rows={10}
+          columns={50}
+          className="form__field"
+          onChange={handleChange}
+        />
+        
+        </div>
 
-          <div>
-            <label>
-              Closing Time :
-              <input
-                type="text"
-                name="hours_close"
-                value={formData.hours_close}
-                onChange={handleChange}
-              />
-            </label>
-          </div>
+        <div className ="form__inputwrap">
+        <label className="form__label" htmlFor="about"> About the Provider : </label>
+       
+        <textarea
+          name="provider_about"
+          id="about"
+          value={formData.provider_about}
+          rows={10}
+          columns={50}
+          className="form__field"
+          onChange={handleChange}
+        />
+        
+       
+        </div>
+        </div>
+        <div className="form__stylewrap">
+        <div className ="form__inputwrap">
+        <label className="form__label" htmlFor="tag">
+        Daycare Tag Line :
+        </label>
+        <input
+          type="text"
+          name="tag_line"
+          id="tag"
+          value={formData.tag_line}
+          className="form__field"
+          onChange={handleChange}
+        />
+        
+        </div>
 
-          <h2> Location Details </h2>
-          <div>
-            <label>
-              Street Number :
-              <input
-                type="text"
-                name="street_number"
-                value={formData.street_number}
-                onChange={handleChange}
-              />
-            </label>
-          </div>
-          <div>
-            <label>
-              Street Name :
-              <input
-                type="text"
-                name="street_name"
-                value={formData.street_name}
-                onChange={handleChange}
-              />
-            </label>
-          </div>
+        <div className ="form__inputwrap">
+        <label className="form__label" htmlFor="price"> 
+        Price per day :</label>
+        <input
+          type="text"
+          name="price"
+          id="price"
+          value={formData.price}
+          className="form__field"
+          onChange={handleChange}
+        />
+        
+        </div>
+        </div>
+        <div className="form__stylewrap">
+        <div className ="form__inputwrap">
+        <label className="form__label" htmlFor="open">
+        Opening Time :</label>
+        <input
+          type="text"
+          name="hours_start"
+          id="open"
+          value={formData.hours_start}
+          className="form__field"
+          onChange={handleChange}
+        />
+        
+        </div>
 
-          <div>
-            <label>
-              City :
-              <input
-                type="text"
-                name="city"
-                value={formData.city}
-                onChange={handleChange}
-              />
-            </label>
-          </div>
+        <div className ="form__inputwrap">
+        <label className="form__label" htmlFor="close">
+        Closing Time : </label>
+        <input
+          type="text"
+          name="hours_close"
+          id="close"
+          value={formData.hours_close}
+          className="form__field"
+          onChange={handleChange}
+        />
+       
+        </div>
+        </div>
 
-          <div>
-            <label>
-              Postal Code :
-              <input
-                type="text"
-                name="postal_code"
-                value={formData.postal_code}
-                onChange={handleChange}
-              />
-            </label>
-          </div>
+        
+       <h2 className="sform__subheads">Location Details </h2>
+       <div className="form__stylewrap">
+        <div className ="form__inputwrap">
+        <label className="form__label" htmlFor="streetn">
+        Street Number : </label>
+        <input
+          type="text"
+          name="street_number"
+          id="streetn"
+          value={formData.street_number}
+          className="form__field"
+          onChange={handleChange}
+        />
+       
+        </div>
+        <div className ="form__inputwrap">
+        <label className="form__label" htmlFor="streetname">
+        Street Name : </label>
+        <input
+          type="text"
+          name="street_name"
+          id="streetname"
+          value={formData.street_name}
+          className="form__field"
+          onChange={handleChange}
+        />
+       
+        </div>
+        </div>
 
-          <div>
-            <label>
-              Province :
-              <input
-                type="text"
-                name="province"
-                value={formData.province}
-                onChange={handleChange}
-              />
-            </label>
-          </div>
+        <div className="form__stylewrap">
+        <div className ="form__inputwrap">
+        <label className="form__label" htmlFor="city">
+        City : </label>
+        <input
+          type="text"
+          name="city"
+          id="city"
+          value={formData.city}
+          className="form__field"
+          onChange={handleChange}
+        />
+       
+        </div>
 
-          <div>
-            <label>
-              Country :
-              <input
-                type="text"
-                name="country"
-                value={formData.country}
-                onChange={handleChange}
-              />
-            </label>
-          </div>
-          <button type="submit"> Edit Daycare</button>
+        <div className ="form__inputwrap">
+        <label className="form__label" htmlFor="postcode">
+       Postal Code :</label>
+        <input
+          type="text"
+          name="postal_code"
+          id="postcode"
+          value={formData.postal_code}
+          className="form__field"
+          onChange={handleChange}
+        />
+        
+        </div>
+        </div>
+
+        <div className="form__stylewrap">
+        <div className ="form__inputwrap">
+        <label className="form__label" htmlFor="province">
+        Province : </label>
+        <input
+          type="text"
+          name="province"
+          id="province"
+          value={formData.province}
+          className="form__field"
+          onChange={handleChange}
+        />
+       
+        </div>
+
+        <div className ="form__inputwrap">
+        <label className="form__label" htmlFor="country">
+        Country : </label>
+        <input
+          type="text"
+          name="country"
+          id="country"
+          value={formData.country}
+          className="form__field"
+          onChange={handleChange}
+        />
+
+        
+        </div>
+</div>
+
+<button type ="submit" className="form__editdaycare"> Edit Daycare</button>
         </form>
+        
+        </div>
+        
       ) : (
-        <div> You are not the owner of this daycare. </div>
+        <div className ="access"> 
+  
+           <h2> You are not the owner of this daycare. Please visit your profile.</h2>
+           <div className="access__btns">
+           <Link to={`/user/${currentUser.id}`}><button className="access__profilebtn access__btn ">Your Profile </button></Link>
+           <Link to="/"> <button className="access__homebtn access__btn">Home</button></Link>
+           </div>
+
+        </div>
       )}
       </Wrapper>
     </>

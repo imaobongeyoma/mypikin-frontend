@@ -1,1 +1,154 @@
-//my daycare component scss
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography" as *;
+@use "../../styles/partials/variables" as *;
+
+.addaccess {
+    text-align: center;
+
+  @include tablet {
+    margin-top: 0rem;
+    padding: 0rem 4rem;
+  }
+
+  @include desktop {
+    padding: 0rem 8rem;
+  }
+
+  &__message {
+    border-radius: 4px;
+    background-color: white;
+    box-shadow: 0 2px 5px 0 rgba(19, 24, 44, 0.1);
+    margin: 0rem;
+    padding-top: 0rem;
+    padding-bottom: 2rem;
+    
+  
+    @include tablet {
+      margin: 1rem 2rem;
+      padding: 1rem 0rem;
+    }
+  
+    @include desktop {
+      margin: 1rem 8rem;
+    }
+}
+
+&__btns {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+&__btn {
+    width: 5rem;
+}
+}
+
+.sform {
+  padding-bottom: 2rem;
+
+  @include tablet {
+    margin: 0rem 6rem;
+  }
+
+  @include desktop {
+    margin: 0rem 10rem;
+  }
+
+  &__heading {
+    background-color: $aqua;
+    margin: 0rem 0rem;
+    color: $white;
+    text-align: center;
+    justify-content: center;
+    padding: 1rem 0rem;
+    border-radius: 5px;
+  }
+
+  &__title {
+    margin: 0rem;
+    font-weight: 300;
+
+    @include tablet {
+      font-size: 2.5rem;
+    }
+  }
+
+  &__subheads {
+    margin-bottom: 0.5rem;
+  }
+
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  margin: 0rem 1rem;
+
+  @include tablet {
+    margin: 0rem;
+  }
+
+  &__inputwrap {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.75rem;
+
+    @include tablet {
+      width: 100%;
+    }
+  }
+
+  &__label {
+    font-size: small;
+    margin-bottom: 0.25rem;
+  }
+
+  &__field {
+    height: 1.5rem;
+    border-radius: 5px;
+    outline: none;
+    border: 1.5px solid $aqua;
+
+    &:focus {
+      outline: none;
+    }
+
+    @include tablet {
+      height: 2rem;
+    }
+  }
+
+  &__stylewrap {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      flex-direction: row;
+      gap: 2rem;
+    }
+  }
+
+  &__adddaycare {
+    background-color: $orange;
+    height: 2rem;
+    border: none;
+    border-radius: 10px;
+    color: $white;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+
+    @include tablet {
+      width: 7rem;
+      padding: 0rem 0.5rem;
+      justify-content: flex-end;
+      align-self: last baseline;
+    }
+  }
+
+}
+
+::placeholder {
+  color: $placeholder;
+}
