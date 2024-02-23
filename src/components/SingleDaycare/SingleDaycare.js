@@ -85,6 +85,7 @@ export default function SelectedDaycare() {
       console.log(err);
     }
   };
+
   return (
     <Wrapper>
       {Object.entries(groupedDaycares).map(([daycare_id, daycare]) => (
@@ -195,7 +196,7 @@ export default function SelectedDaycare() {
                 <h3 className="singled__profdetails">
                   Background Check Approved
                 </h3>
-                <img src={blueicon} className="singled__bgimage"></img>
+                <div><img src={blueicon} className="singled__bgimage"></img></div>
               </div>
             ) : (
               <div className="singled__bgcheck">
@@ -209,7 +210,7 @@ export default function SelectedDaycare() {
             <div>
               {currentUser && currentUser.role === "Admin" && (
                 <div className="singled__edit-del">
-                  <img src={editicon} alt="editicon" title="Edit provider details"></img>
+                  <Link to={`/user/${daycare.provider_id}/edit`}><img src={editicon} alt="editicon" title="Edit provider details"></img></Link>
                   <img
                     onClick={DeleteUser}
                     src={deleteicon}
@@ -221,9 +222,9 @@ export default function SelectedDaycare() {
             </div>
             {currentUser &&
               currentUser.role !== "Admin" &&
-              currentUser.first_name === daycare.first_name && (
+             currentUser.first_name === daycare.first_name && (
                 <div className="singled__edit-del">
-                  <img src={editicon} alt="editicon" title="Edit provider details"></img>
+                  <Link to={`/user/${daycare.provider_id}/edit`}><img src={editicon} alt="editicon" title="Edit provider details"></img></Link>
                 </div>
               )}
           </div>

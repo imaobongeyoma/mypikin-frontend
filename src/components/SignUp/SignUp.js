@@ -15,9 +15,9 @@ export default function SignUp() {
   const [phone_number, setPhonenumber] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
   const [file, setFile] = useState();
-  const [msg, setMsg] = useState("");
+    const [msg, setMsg] = useState("");
+    
   const navigate = useNavigate();
 
   

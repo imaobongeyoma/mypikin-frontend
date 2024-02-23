@@ -56,6 +56,7 @@ export default function EditDayCare() {
         province: response.data.province,
         country: response.data.country,
       });
+      
     
     } catch (error) {
       console.error("Error fetching daycare details:", error);

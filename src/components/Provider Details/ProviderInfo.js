@@ -13,29 +13,38 @@ import Wrapper from "../Wrapper/Wrapper";
 export default function Provider() {
   const SERVER_URL = process.env.REACT_APP_SERVER_URL;
   const [selectedProvider, setSelectedProvider] = useState([]);
+  const [groupedProvider, setGroupedProvider] = useState([]);
   const [user, setUser] = useState([]);
+  // const [providerOnly, setproviderOnly]= useState([])
 
   const { providerid } = useParams();
-  //   const { userid } = useParams();
+  // const {provideronlyid} = useParams()
   const navigate = useNavigate();
   const { currentUser } = useContext(AuthContext);
-  //  console.log(currentUser.role)
+
 
   // Fetch full details of selected daycare  from the API
-  const fetchSelectedprovider = async (id) => {
+  const fetchData = async (id) => {
     try {
-      const response = await axios.get(`${SERVER_URL}/users/${id}/daycare`);
+      const [response, providerOnly] = await Promise.all
+      ([
+        axios.get(`${SERVER_URL}/users/${id}/daycare`),
+        axios.get(`${SERVER_URL}/users/${id}`) ])
       setSelectedProvider(response.data);
-      setUser(response.data[0].provider_id);
-      console.log(response.data);
+      // setGroupedProvider(response.data[0].provider_id);
+      setUser(providerOnly.data)
+      console.log(providerOnly.data);
+      
     } catch (error) {
       console.error("Error fetching daycare details:", error);
     }
   };
 
   useEffect(() => {
-    fetchSelectedprovider(providerid);
+    fetchData(providerid);
   }, [providerid]);
+
+
 
   if (!selectedProvider || !currentUser) {
     return <div>Loading...</div>;
@@ -69,13 +78,29 @@ export default function Provider() {
   return (
     <Wrapper>
       <h1> Details</h1>
-
-      {Object.entries(groupedProviders).map(([provider_id, provider]) => (
+{Object.keys(groupedProviders).length === 0 ? (
+  <div>
+  <div>{user.username}</div>
+  <div>{user.password}</div>
+  <div>{user.first_name}</div>
+  <div>{user.last_name}</div>
+  <><img src={`${SERVER_URL}/${user.profile_image}`}></img></>
+  </div>
+) :
+(
+      Object.entries(groupedProviders).map(([provider_id, provider]) => (
         <div key={provider_id}>
-          {currentUser.id === provider.provider_id ? (
+          {provider && currentUser && currentUser.id === provider.provider_id ? (
             <div>
               <p>First Name: {provider.first_name}</p>
               <p>Last Name : {provider.last_name}</p>
+              <div className="picture">
+              <img
+                src={`${SERVER_URL}${provider.profile_image}`}
+                className="profileimage"
+              ></img>
+              <div>{provider.username}</div>
+            </div>
               {currentUser && currentUser.role === "Admin" && (
                 <div>
                   <img src={editicon} alt="editicon"></img>
@@ -101,7 +126,7 @@ export default function Provider() {
             </div>
           )}
         </div>
-      ))}
+      )))}
     </Wrapper>
   );
 }

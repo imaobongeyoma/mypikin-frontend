@@ -11,6 +11,8 @@ import AddDayCare from "./components/AddDayCare/AddDayCare";
 import Header from "./components/Header/Header";
 import Provider from "./components/Provider Details/ProviderInfo";
 import EditDayCare from "./components/EditDayCare/EditDayCare";
+import Footer from "./components/Footer/Footer";
+import EditUser from "./components/EditProvider/EditProvider";
 // import NotFound from "./components/NotFound/NotFound";
 
 function App() {
@@ -28,8 +30,10 @@ function App() {
         <Route path="/daycares/:id/edit" element={<EditDayCare/>} />
         <Route path="/daycares/:daycareid/info" element={<SelectedDaycare/>} />
         <Route path="/user/:providerid/" element={<Provider/>} />
+        <Route path="user/:id/edit" element={<EditUser/>}/>
         <Route path="*" element={<NotFound/>} />
       </Routes>
+      <Footer/>
     </BrowserRouter>
   );
 }
