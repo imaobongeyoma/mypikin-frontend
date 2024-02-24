@@ -1,11 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { AuthContext } from "../Context/authContext";
-import { Link, NavLink } from "react-router-dom";
 import "./Footer.scss"
-import blueicon from "../../assets/icons/blueicon.png";
-import orangeicon from "../../assets/icons/orangeicon.png";
-import deleteicon from "../../assets/icons/deleteicon.png";
-import editicon from "../../assets/icons/editicon.png";
 
 export default function Footer() {
     return (

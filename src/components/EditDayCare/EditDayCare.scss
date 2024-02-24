@@ -2,7 +2,6 @@
 @use "../../styles/partials/typography" as *;
 @use "../../styles/partials/variables" as *;
 
-
 .sform {
   padding-bottom: 2rem;
 
@@ -36,7 +35,6 @@
   &__subheads {
     margin-bottom: 0.5rem;
   }
-
 }
 
 .form {
@@ -104,7 +102,6 @@
       align-self: last baseline;
     }
   }
-
 }
 
 ::placeholder {
@@ -112,12 +109,12 @@
 }
 
 .access {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 2rem;
-    padding-top: 2rem;
-    margin: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 2rem;
+  padding-top: 2rem;
+  margin: 2rem;
 
   @include tablet {
     padding: 2rem 4rem;
@@ -127,16 +124,14 @@
     padding: 2rem 8rem;
   }
 
-&__btns {
+  &__btns {
     display: flex;
     gap: 2rem;
     justify-content: center;
     margin-top: 1rem;
+  }
 
-}
-
-&__btn {
+  &__btn {
     width: 6rem;
-   
-}
+  }
 }

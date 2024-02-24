@@ -2,8 +2,8 @@
 @use "../styles/partials/typography" as *;
 @use "../styles/partials/variables" as *;
 .App {
-    text-align: center;
-  }
+  text-align: center;
+}
 
 *,
 *::before,
@@ -11,33 +11,27 @@
   box-sizing: border-box;
 }
 
-body{
-    margin: 0;
-    // font-family: "KG Penmanship", Geneva, Tahoma, sans-serif;
-    font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
-    // background-color: #f6f7f1;
-    background-color: white;
+body {
+  margin: 0;
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+  background-color: white;
 
-    @include tablet {
-      background-color: white;
-    }
 }
 
-
-a{
-    color:inherit;
-    text-decoration: none;
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
 li {
-    list-style: none;
-  }
+  list-style: none;
+}
 
-  textarea {
-    font-family: inherit;
-    height: fit-content;
-  }
+textarea {
+  font-family: inherit;
+  height: fit-content;
+}
 
-  .hover-pointer:hover {
-    cursor:pointer;
-  }
+.hover-pointer:hover {
+  cursor: pointer;
+}

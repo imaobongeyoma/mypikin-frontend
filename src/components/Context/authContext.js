@@ -15,7 +15,7 @@ export const AuthContextProvider = ({ children }) => {
       });
       setCurrentUser(res.data);
     } catch (error) {
-      console.log("Login error:", error);
+      console.error("Login error:", error);
     }
   };
 
@@ -26,7 +26,7 @@ export const AuthContextProvider = ({ children }) => {
       setCurrentUser(null);
       window.location.href = "/daycarelist";
     } catch (error) {
-      console.log("Logout error:", error);
+      console.error("Logout error:", error);
     }
   };
 

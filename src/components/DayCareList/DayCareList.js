@@ -25,6 +25,7 @@ export default function DayCareList() {
     fetchdaycareList();
   }, []);
 
+
   // Group daycares by ID and collect first photo for each daycare ID
   const groupedDaycares = daycares.reduce((acc, daycare) => {
     if (!acc[daycare.daycare_id]) {
@@ -63,11 +64,11 @@ export default function DayCareList() {
               return false;
             })
             .filter((daycare) => daycare.background_check_done === "Yes")
-            .length === 0 && (
+            .length === 0 &&  (
             <div className="daycare__notfound">
               We don't currently have daycares in your searched location but
               we're adding new daycares everyday. Please keep an eye out for new
-              additions in your city
+              additions in your city.
             </div>
           )}
           {Object.values(groupedDaycares)

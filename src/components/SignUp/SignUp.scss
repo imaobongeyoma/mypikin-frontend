@@ -35,18 +35,16 @@
   &__ctawrap {
     display: flex;
     justify-content: center;
-    gap:0.5rem;
+    gap: 0.5rem;
     border-radius: 5px;
     margin-bottom: 0.5rem;
     font-weight: 300;
-   
   }
 
-  &__icon{
-    height:1.875rem;
+  &__icon {
+    height: 1.875rem;
     width: 1.875rem;
     margin-top: 0.5rem;
-    
   }
 
   &__text {

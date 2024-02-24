@@ -5,7 +5,6 @@ import axios from "axios";
 import { AuthContext } from "../Context/authContext";
 import Wrapper from "../Wrapper/Wrapper";
 import { Link } from "react-router-dom";
-import doubleicon from "../../assets/icons/doubleicon.png";
 import "./EditProvider.scss";
 
 export default function EditUser() {
@@ -52,7 +51,7 @@ export default function EditUser() {
         role: response.data.role,
         profile_image: response.data.profile_image,
       });
-      console.log(response.data.profile_image);
+      
     } catch (error) {
       console.error("Error fetching user details:", error);
     }
@@ -114,10 +113,6 @@ export default function EditUser() {
         <div className="sform__heading sform__margin">
           <h1 className="sform__title">Edit Profile</h1>
         </div>
-        {/* <div className="sform__ctawrap">
-          <img src={doubleicon} alt="doubleicon" className="sform__icon"></img>
-          <p className="sform__text">Create an account</p>
-        </div> */}
 
         <form action="" className="form" onSubmit={handleSubmit}>
           <div className="form__stylewrap">
@@ -258,7 +253,6 @@ export default function EditUser() {
                 type="file"
                 name="profile_image"
                 id="profile"
-                // value={formData.profile_image}
                 onChange={handleChange}
               />
             </div>

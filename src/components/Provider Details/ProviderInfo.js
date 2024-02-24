@@ -13,7 +13,6 @@ import "./ProviderInfo.scss";
 export default function ProviderInfo() {
   const SERVER_URL = process.env.REACT_APP_SERVER_URL;
   const [selectedProvider, setSelectedProvider] = useState([]);
-  const [groupedProvider, setGroupedProvider] = useState([]);
   const [user, setUser] = useState([]);
 
   const { providerid } = useParams();
@@ -29,8 +28,6 @@ export default function ProviderInfo() {
       ]);
       setSelectedProvider(response.data);
       setUser(providerOnly.data);
-      console.log(providerOnly.data);
-      console.log(response.data.length);
     } catch (error) {
       console.error("Error fetching daycare details:", error);
     }
@@ -64,7 +61,7 @@ export default function ProviderInfo() {
       setUser(res.data);
       navigate("/daycarelist");
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
   return (

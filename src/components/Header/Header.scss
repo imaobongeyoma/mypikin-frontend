@@ -3,120 +3,108 @@
 @use "../../styles/partials/variables" as *;
 
 
+.header {
+  position: sticky;
+  top: 0;
+}
 .nav {
-    padding: 1rem 1rem 1rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    // background-color: lightblue;
-    background-color: white;
-    position: sticky;
-    top: 0;
-    border-bottom: 1px solid #f6f7f1;
+  padding: 1rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  background-color: white;
+  border-bottom: 1px solid #f6f7f1;
+
+  @include tablet {
+    padding: 1rem 2rem;
+    flex-direction: row;
+    align-items: center;
+  }
+  @include desktop {
+    padding: 1rem 7.3rem;
+  }
+
+  &__logoimg {
+    height: 65px;
+    width: 65px;
+  }
+
+  &__list {
+    width: 100%;
+    text-align: center;
 
     @include tablet {
-        padding: 1rem 2rem;
-        flex-direction: row;
-        align-items: center;
+      text-align: left;
+      width: fit-content;
     }
-    @include desktop {
-        padding: 1rem 7.3rem;
+  }
+
+  &__userlink :not(.active):hover {
+    background-color: #ff914d;
+  }
+  &__userlink {
+    border-radius: 15px;
+    width: 100%;
+  }
+
+  &__menu {
+    display: flex;
+    position: absolute;
+    top: 1.4rem;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 2.25rem;
+    height: 2rem;
+    align-self: flex-end;
+    margin-right: 0rem;
+
+    @include tablet {
+      display: none;
     }
+  }
+  &__span {
+    height: 0.4rem;
+    width: 100%;
+    background-color: #ff914d;
+    border-radius: 0.2rem;
+  }
 
+  &__menuul {
+    flex-direction: column;
+    width: 100%;
+    padding-left: 0rem;
+    display: none;
 
-    &__logoimg{
-        height: 65px;
-        width:65px;
-
+    @include tablet {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      gap: 1rem;
     }
+  }
 
-    &__list {
-        width: 100%;
-        text-align: center;
+  &__open {
+    display: flex;
+  }
 
-        @include tablet {
-        text-align: left;
-        width: fit-content;
-        }
+  &__userwrap {
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+    border: 2px solid #309bae;
+    margin: 0.2rem 0rem;
+    border-radius: 20px;
+    @include tablet {
+      padding-right: 1rem;
     }
+  }
 
-   &__userlink :not(.active):hover {
-        background-color: #ff914d;
-    }
-    &__userlink {
-        border-radius: 15px;
-        width: 100%;
-    }
-
-    &__menu {
-        display: flex;
-        position: absolute;
-        top: 1.4rem;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 2.25rem;
-        height: 2rem;
-        align-self: flex-end;
-        margin-right: 0rem;
-    
-
-        @include tablet {
-            display: none;
-        }
-    }
-    &__span {
-        height: 0.4rem;
-        width: 100%;
-        background-color:#ff914d;
-        border-radius: 0.2rem;
-    }
-
-    &__menuul {
-        flex-direction: column;
-        width: 100%;
-        padding-left: 0rem;
-        display: none;
-    
-        @include tablet {
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-end;
-            gap: 1rem;
-        }
-    }
-
-    &__open {
-        display:flex;
-    }
-
-    &__userwrap {
-        display: flex;
-        gap: 0.3rem;
-        align-items: center;
-        border: 2px solid #309bae;
-        margin: 0.2rem 0rem;
-        border-radius: 20px;
-        @include tablet{
-            // width: 100%;
-            padding-right: 1rem;
-
-        }
-       
-    }
-
-    &__icon {
-        border-radius: 15px;
-    }
-    
+  &__icon {
+    border-radius: 15px;
+  }
 }
 
 .active {
-    background-color: #ff914d;
-    
+  background-color: #ff914d;
 }
-
-
-// nav ul li a:not(.active):hover {
-//     background-color: red ;
-// }
