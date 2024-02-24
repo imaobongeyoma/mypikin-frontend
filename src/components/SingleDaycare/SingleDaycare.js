@@ -133,18 +133,10 @@ export default function SelectedDaycare() {
             {showContacts && (
               <div className="singled__contacts">
                 <p className="singled__email">
-                  Please reach us at
-                  <span className="singled__detail">{daycare.email}</span>
+                  Please reach us at <span className="singled__detail">{daycare.email}</span>
                 </p>
                 <p className="singled__phone">
-                  Our phone number is
-                  <span className="singled__detail"> 
-                    {daycare.phone_number}
-                  </span>
-                </p>
-                <p>
-                  We're looking forward to hearing from you and taking care of
-                  your little one.
+                  Our phone number is <span className="singled__detail">{daycare.phone_number} </span>
                 </p>
               </div>
             )}
@@ -233,6 +225,9 @@ export default function SelectedDaycare() {
           <div className="singled__bottomdetails">
             <h2 className="singled__about">More About {daycare.name}</h2>
             <p className="singled__description">{daycare.daycare_description}</p>
+            <p className="singled__description"> {daycare.provider_about}</p>
+           
+
           </div>
           <div className="singled__photos">
           <h2 className="singled__photostitle">Photos</h2>

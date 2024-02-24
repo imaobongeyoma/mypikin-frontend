@@ -1,14 +1,46 @@
 //my daycare component js
 import React, { useContext } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { AuthContext } from "../Context/authContext";
-import { Link } from "react-router-dom";
+import { Link,  useNavigate , useParams } from "react-router-dom";
 import Wrapper from "../Wrapper/Wrapper";
 import "./AddDayCare.scss";
 
 export default function AddDayCare() {
   const { currentUser } = useContext(AuthContext);
+  const [selectedProvider, setSelectedProvider] = useState([]);
+  const [user, setUser] = useState([]);
+  const navigate = useNavigate();
+  const { id } = useParams();
+
+// trying to enforce user to create one daycare only
+const fetchData = async (id) => {
+  try {
+    const [response, providerOnly] = await Promise.all([
+      axios.get(`${SERVER_URL}/users/${id}/daycare`),
+      axios.get(`${SERVER_URL}/users/${currentUser.id}`),
+    ]);
+    setSelectedProvider(response.data);
+    setUser(providerOnly.data);
+    // setGroupedProvider(response.data[0].provider_id);
+  
+    console.log(providerOnly.data);
+    console.log(selectedProvider.length);
+    console.log(id);
+  } catch (error) {
+    console.error("Error fetching daycare details:", error);
+  }
+};
+
+useEffect(() => {
+  fetchData(id);
+}, [id]);
+
+
+
+  //
+
   const [formData, setFormData] = useState({
     provider_id: [currentUser.id],
     name: "",
@@ -56,6 +88,7 @@ export default function AddDayCare() {
     for (let i = 0; i < formData.daycare_photos.length; i++) {
       formDataToSend.append("daycare_photos", formData.daycare_photos[i]);
     }
+    
 
     try {
       await axios.post(`${SERVER_URL}/daycares/createdaycare`, formDataToSend, {
@@ -63,6 +96,7 @@ export default function AddDayCare() {
           "Content-Type": "multipart/form-data",
         },
       });
+      navigate(`/user/${currentUser.id}`)
     } catch (error) {
       console.error("Error adding daycare:", error);
     }
@@ -100,9 +134,35 @@ export default function AddDayCare() {
     );
   }
 
+  // if (id !== selectedProvider.provider_id) {
+  //   return (
+  //     <main>
+  //       You can only create one daycare
+  //       <Link to="/login"> Log In</Link>
+  //     </main>
+  //   );
+  // }
+
+  const groupedProviders = selectedProvider.reduce((acc, provider) => {
+    if (!acc[provider.provider_id]) {
+      acc[provider.provider_id] = {
+        ...provider,
+        daycarephotos: [`${SERVER_URL}${provider.daycarephoto}`],
+      };
+    } else {
+      acc[provider.provider_id].daycarephotos.push(
+        `${SERVER_URL}${provider.daycarephoto}`
+      );
+    }
+    return acc;
+  }, {});
+
   return (
     <>
       <Wrapper>
+      {/* {Object.keys(groupedProviders).length > 0 ? ( */}
+        {selectedProvider.length > 0 || id !== selectedProvider.provider_id? (
+        <div>You cannot create more than one daycare. You can edit your existing daycare details. If you need more help, please contact support</div> ): (
         <div className="sform">
           <div className="sform__heading">
             <h1 className="sform__title">Create Daycare</h1>
@@ -337,7 +397,7 @@ export default function AddDayCare() {
               </button>
             </div>
           </form>
-        </div>
+        </div> )}
       </Wrapper>
     </>
   );

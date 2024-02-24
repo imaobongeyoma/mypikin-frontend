@@ -3,13 +3,13 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import deleteicon from "../../assets/icons/delete_outline-24px.svg";
-import editicon from "../../assets/icons/edit-24px.svg";
+import deleteicon from "../../assets/icons/deleteicon.png";
+import editicon from "../../assets/icons/editicon.png";
 import sort from "../../assets/icons/sort-24px.svg";
 import { AuthContext } from "../Context/authContext";
 import { useContext } from "react";
 import Wrapper from "../Wrapper/Wrapper";
-
+import "./ProviderInfo.scss"; 
 export default function Provider() {
   const SERVER_URL = process.env.REACT_APP_SERVER_URL;
   const [selectedProvider, setSelectedProvider] = useState([]);
@@ -22,19 +22,18 @@ export default function Provider() {
   const navigate = useNavigate();
   const { currentUser } = useContext(AuthContext);
 
-
   // Fetch full details of selected daycare  from the API
   const fetchData = async (id) => {
     try {
-      const [response, providerOnly] = await Promise.all
-      ([
+      const [response, providerOnly] = await Promise.all([
         axios.get(`${SERVER_URL}/users/${id}/daycare`),
-        axios.get(`${SERVER_URL}/users/${id}`) ])
+        axios.get(`${SERVER_URL}/users/${id}`),
+      ]);
       setSelectedProvider(response.data);
       // setGroupedProvider(response.data[0].provider_id);
-      setUser(providerOnly.data)
+      setUser(providerOnly.data);
       console.log(providerOnly.data);
-      
+      console.log(response.data.length);
     } catch (error) {
       console.error("Error fetching daycare details:", error);
     }
@@ -44,13 +43,9 @@ export default function Provider() {
     fetchData(providerid);
   }, [providerid]);
 
-
-
   if (!selectedProvider || !currentUser) {
     return <div>Loading...</div>;
   }
-
-
 
   const groupedProviders = selectedProvider.reduce((acc, provider) => {
     if (!acc[provider.provider_id]) {
@@ -77,56 +72,91 @@ export default function Provider() {
   };
   return (
     <Wrapper>
-      <h1> Details</h1>
-{Object.keys(groupedProviders).length === 0 ? (
-  <div>
-  <div>{user.username}</div>
-  <div>{user.password}</div>
-  <div>{user.first_name}</div>
-  <div>{user.last_name}</div>
-  <><img src={`${SERVER_URL}/${user.profile_image}`}></img></>
-  </div>
-) :
-(
-      Object.entries(groupedProviders).map(([provider_id, provider]) => (
-        <div key={provider_id}>
-          {provider && currentUser && currentUser.id === provider.provider_id ? (
-            <div>
-              <p>First Name: {provider.first_name}</p>
-              <p>Last Name : {provider.last_name}</p>
-              <div className="picture">
-              <img
-                src={`${SERVER_URL}${provider.profile_image}`}
-                className="profileimage"
-              ></img>
-              <div>{provider.username}</div>
-            </div>
-              {currentUser && currentUser.role === "Admin" && (
-                <div>
-                  <img src={editicon} alt="editicon"></img>
+      <h1 className="title"> Details</h1>
+      {Object.keys(groupedProviders).length === 0 ? (
+        <div className="details">
+          <div className="details__profcont">
+            <img
+              src={`${SERVER_URL}/${user.profile_image}`}
+              className="details__profileimage"
+            ></img>
+          </div>
+          <div className="details__detail">Username: {user.username}</div>
+          <div className="details__detail">First Name: {user.first_name}</div>
+          <div className="details__detail">Last Name: {user.last_name}</div>
+          <div className="details__detail">Role: {user.role}</div>
+          <button onClick={() =>
+                    navigate(`/users/${currentUser.id}/createdaycare`)
+                  }>Create a daycare </button>
+        </div>
+      ) : (
+        Object.entries(groupedProviders).map(([provider_id, provider]) => (
+          <div key={provider_id}>
+            {provider &&
+            currentUser &&
+            currentUser.id === provider.provider_id ? (
+              <div className="details">
+                <div className="details__profcont">
                   <img
-                    onClick={DeleteUser}
-                    src={deleteicon}
-                    alt="editicon"
+                    src={`${SERVER_URL}/${user.profile_image}`}
+                    className="details__profileimage"
                   ></img>
                 </div>
-              )}
-              {currentUser &&
-                currentUser.role !== "Admin" &&
-                currentUser.first_name === provider.first_name && (
+                <div className="details__detail">Username: {provider.username}</div>
+                <div className="details__detail">
+                  First Name: {provider.first_name}
+                </div>
+
+                <div className="details__detail">
+                  Last Name: {provider.last_name}
+                </div>
+                <div className="details__detail">Role: {provider.role}</div>
+
+                {currentUser && currentUser.role === "Admin" && (
                   <div>
-                    <img src={editicon} alt="editicon"></img>
+                    <img src={editicon} alt="editicon" onClick={() =>
+                    navigate(`/daycares/${provider.daycare_id}/edit`)
+                  }></img>
+                    <img
+                      onClick={DeleteUser}
+                      src={deleteicon}
+                      alt="deleteicon"
+                    ></img>
                   </div>
                 )}
-            </div>
-          ) : (
+                {currentUser &&
+                  currentUser.role !== "Admin" &&
+                  currentUser.first_name === provider.first_name && (
+                    <div>
+                      <img src={editicon} alt="editicon" onClick={() =>
+                    navigate(`/user/${provider.provider_id}/edit`)
+                  }></img>
+                    </div>
+                  )}
+              </div>
+            ) : (
+              <div>
+                <div>You are not authorized to view this page. </div>
+                <Link to={`/user/${currentUser.id}`}>
+                  <button>View Your Profile</button>
+                </Link>
+              </div>
+            )}
+            <h2>Your Daycare</h2>
+            <p>{provider.name}</p>
             <div>
-              <div>You are not authorized to view this page. </div>
-              <Link to={`/user/${currentUser.id}`}><button>View Your Profile</button></Link>
-            </div>
-          )}
-        </div>
-      )))}
+            <button onClick={() =>
+                    navigate(`/daycares/${provider.daycare_id}/info`)
+                  }>View Details</button>
+
+
+            <button onClick={() =>
+                    navigate(`/daycares/${provider.daycare_id}/edit`)
+                  }>Edit</button>
+          </div>
+          </div>
+        ))
+      )}
     </Wrapper>
   );
 }

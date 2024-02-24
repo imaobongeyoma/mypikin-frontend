@@ -26,7 +26,7 @@ function App() {
         <Route path="/daycarelist" element={<DayCareList/>} />
         {/* <Route path="/provider" element={<ProviderInfo />} /> */}
         <Route path="/providerlist" element={<ProviderList/>} />
-        <Route path="/createdaycare" element={<AddDayCare/>} />
+        <Route path="/user/:id/createdaycare" element={<AddDayCare/>} />
         <Route path="/daycares/:id/edit" element={<EditDayCare/>} />
         <Route path="/daycares/:daycareid/info" element={<SelectedDaycare/>} />
         <Route path="/user/:providerid/" element={<Provider/>} />

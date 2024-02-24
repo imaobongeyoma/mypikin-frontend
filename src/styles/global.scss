@@ -32,3 +32,8 @@ a{
 li {
     list-style: none;
   }
+
+  textarea {
+    font-family: inherit;
+    height: fit-content;
+  }

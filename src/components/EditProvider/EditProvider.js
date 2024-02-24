@@ -111,13 +111,13 @@ export default function EditUser() {
     <Wrapper>
         {currentUser.first_name === formData.first_name || currentUser.role === "Admin" ? (
       <div className="sform">
-        <div className="sform__heading">
-          <h1 className="sform__title">Provide Care</h1>
+        <div className="sform__heading sform__margin">
+          <h1 className="sform__title">Edit Profile</h1>
         </div>
-        <div className="sform__ctawrap">
+        {/* <div className="sform__ctawrap">
           <img src={doubleicon} alt="doubleicon" className="sform__icon"></img>
           <p className="sform__text">Create an account</p>
-        </div>
+        </div> */}
 
         <form action="" className="form" onSubmit={handleSubmit}>
           <div className="form__stylewrap">
