@@ -22,8 +22,8 @@
 
   &__sicon {
     position: absolute;
-    top: 9%;
-    left: 3%;
+    top: 19%;
+    left: 2%;
 
     @include tablet {
       top: 10%;
@@ -37,13 +37,16 @@
   }
 
   &__box {
-    height: 2rem;
+    height: 3rem;
     border-radius: 15px;
     outline: none;
     border: 2px solid $aqua;
     width: 100%;
     margin-bottom: 1rem;
     padding-left: 2rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-size: 1rem;
 
     &:focus {
       outline: none;
@@ -68,6 +71,7 @@
 .daycarewrapper {
   display: flex;
   flex-direction: column;
+  margin-top: 1.5rem;
 
   @include tablet {
     flex-direction: row;
