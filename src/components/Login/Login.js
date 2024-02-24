@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import { AuthContext } from "../Context/authContext";
 import Wrapper from "../Wrapper/Wrapper";
-import "../SignUp/SignUp-login.scss"
+import "../Login/Login.scss"
 import doubleicon from "../../assets/icons/doubleicon.png"
 
 export default function Login() {

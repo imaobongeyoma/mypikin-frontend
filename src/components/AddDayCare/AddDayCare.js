@@ -156,13 +156,16 @@ useEffect(() => {
     }
     return acc;
   }, {});
+  console.log(typeof id
+    )
 
   return (
     <>
       <Wrapper>
       {/* {Object.keys(groupedProviders).length > 0 ? ( */}
-        {selectedProvider.length > 0 || id !== selectedProvider.provider_id? (
-        <div>You cannot create more than one daycare. You can edit your existing daycare details. If you need more help, please contact support</div> ): (
+        {selectedProvider.length > 0 || parseInt(id, 10) !== currentUser.id ? (
+        <div>You cannot create more than one daycare. You can edit your existing daycare details. If you need more help, please contact support</div> ) : (
+          
         <div className="sform">
           <div className="sform__heading">
             <h1 className="sform__title">Create Daycare</h1>
@@ -397,6 +400,7 @@ useEffect(() => {
               </button>
             </div>
           </form>
+          
         </div> )}
       </Wrapper>
     </>

@@ -1,39 +1,37 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./styles/global.scss";
-import Login from "./components/Login/Login";
-import SignUp from "./components/SignUp/SignUp";
-import NotFound from "./components/NotFound/NotFound";
-// import ProviderInfo from "./components/ProviderInfo/ProviderInfo";
-import ProviderList from "./components/ProviderList/ProviderList";
-import DayCareList from "./components/DayCareList/DayCareList";
-import SelectedDaycare from "./components/SingleDaycare/SingleDaycare";
-import AddDayCare from "./components/AddDayCare/AddDayCare";
 import Header from "./components/Header/Header";
-import Provider from "./components/Provider Details/ProviderInfo";
-import EditDayCare from "./components/EditDayCare/EditDayCare";
-import Footer from "./components/Footer/Footer";
+import SignUpPage from "./pages/LoginPage/SignUpPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import ProviderInfoPage from "./pages/LoginPage/ProviderInfoPage";
 import EditUser from "./components/EditProvider/EditProvider";
-// import NotFound from "./components/NotFound/NotFound";
+import AddDayCare from "./components/AddDayCare/AddDayCare";
+import EditDayCare from "./components/EditDayCare/EditDayCare";
+import DaycareListPage from "./pages/LoginPage/DaycareListPage";
+import SingleDaycarePage from "./pages/LoginPage/SingleDaycarePage";
+import NotFound from "./components/NotFound/NotFound";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
     <BrowserRouter>
-    <Header/>
+      <Header />
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/" element={<DayCareList />} />
-        <Route path="/daycarelist" element={<DayCareList/>} />
-        {/* <Route path="/provider" element={<ProviderInfo />} /> */}
-        <Route path="/providerlist" element={<ProviderList/>} />
-        <Route path="/user/:id/createdaycare" element={<AddDayCare/>} />
-        <Route path="/daycares/:id/edit" element={<EditDayCare/>} />
-        <Route path="/daycares/:daycareid/info" element={<SelectedDaycare/>} />
-        <Route path="/user/:providerid/" element={<Provider/>} />
-        <Route path="user/:id/edit" element={<EditUser/>}/>
-        <Route path="*" element={<NotFound/>} />
+        <Route path="/signup" element={<SignUpPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/user/:providerid/" element={<ProviderInfoPage />} />
+        <Route path="user/:id/edit" element={<EditUser />} />
+        <Route path="/user/:id/createdaycare" element={<AddDayCare />} />
+        <Route path="/daycares/:id/edit" element={<EditDayCare />} />
+        <Route path="/" element={<DaycareListPage />} />
+        <Route path="/daycarelist" element={<DaycareListPage />} />
+        <Route
+          path="/daycares/:daycareid/info"
+          element={<SingleDaycarePage />}
+        />
+        <Route path="*" element={<NotFound />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </BrowserRouter>
   );
 }
