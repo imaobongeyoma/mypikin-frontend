@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import axios from "axios";
 import Wrapper from "../Wrapper/Wrapper";
 import "./DayCareList.scss";
 import doubleicon from "../../assets/icons/doubleicon.png";
 import searchicon from "../../assets/icons/search-24px.svg";
 
-export default function DayCareList() {
+export default function DayCareList({menuOpen}) {
   const SERVER_URL = process.env.REACT_APP_SERVER_URL;
   const [daycares, setDaycares] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -39,9 +39,9 @@ export default function DayCareList() {
 
   return (
     <Wrapper>
-      <div className="home">
-        <div className="search">
-          <img src={searchicon} className="search__sicon"></img>
+        <div className="searchcontainer">
+        <div className={`search ${menuOpen? 'menu-open' : ""}`}>
+          <img src={searchicon} className="search__sicon" alt="searchicon"></img>
           <input
             type="text"
             placeholder="Search by City"
@@ -50,7 +50,11 @@ export default function DayCareList() {
             }}
             className="search__box"
           ></input>
+          
         </div>
+       
+        <div className="home">
+        
         <div className="daycarewrapper">
           {Object.values(groupedDaycares)
             .filter((daycare) => {
@@ -66,6 +70,7 @@ export default function DayCareList() {
             .filter((daycare) => daycare.background_check_done === "Yes")
             .length === 0 &&  (
             <div className="daycare__notfound">
+              <p>Showing 0 results for {searchTerm}</p>
               We don't currently have daycares in your searched location but
               we're adding new daycares everyday. Please keep an eye out for new
               additions in your city.
@@ -87,7 +92,7 @@ export default function DayCareList() {
               <div
                 key={daycare.id}
                 onClick={() => navigate(`/daycares/${daycare.id}/info`)}
-                className="daycare"
+                className="daycare hover-pointer"
               >
                 <div className="daycare__imagewrap">
                   <img
@@ -112,6 +117,7 @@ export default function DayCareList() {
               </div>
             ))}
         </div>
+      </div>
       </div>
     </Wrapper>
   );

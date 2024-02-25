@@ -2,37 +2,44 @@
 @use "../../styles/partials/typography" as *;
 @use "../../styles/partials/variables" as *;
 
-.home {
-  padding: 1rem 1rem 2rem;
-
-  @include tablet {
-    margin: 0rem 0rem;
-  }
-
-  @include desktop {
-    margin: 0rem 0rem;
-  }
+.searchcontainer {
+  display: flex;
+  flex-direction: column;
 }
 
 .search {
   display: flex;
   justify-content: center;
-  position: sticky;
-  top: 10%;
+  position: fixed;
+
+  top: 12.8vh;
+  width: 100%;
+  width: calc(100% - 4rem);
+  padding: 0rem 1rem 2rem;
+
+  @include tablet {
+    top: 13vh;
+    width: calc(100% - 8rem);
+  }
+
+  @include desktop {
+    top: 13vh;
+    width: calc(100% - 16rem);
+  }
 
   &__sicon {
     position: absolute;
-    top: 19%;
-    left: 2%;
+    top: 16%;
+    left: 6%;
 
     @include tablet {
-      top: 10%;
-      left: 22%;
+      top: 16%;
+      left: 23.3%;
     }
 
     @include desktop {
-      top: 10%;
-      left: 21%;
+      top: 19%;
+      left: 22%;
     }
   }
 
@@ -42,8 +49,7 @@
     outline: none;
     border: 2px solid $aqua;
     width: 100%;
-    margin-bottom: 1rem;
-    padding-left: 2rem;
+    padding-left: 2.5rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
     font-size: 1rem;
@@ -57,9 +63,8 @@
     }
 
     @include tablet {
-      height: 2rem;
       width: 60%;
-      padding-left: 2.5rem;
+      padding-left: 2.9rem;
     }
   }
 
@@ -68,10 +73,23 @@
   }
 }
 
+.home {
+  padding-top: 3.5rem;
+  margin-bottom: 1rem;
+
+  @include tablet {
+    margin: 0rem 0rem;
+  }
+
+  @include desktop {
+    margin: 0rem 0rem;
+  }
+}
+
 .daycarewrapper {
+  padding: 1rem 1rem 2rem;
   display: flex;
   flex-direction: column;
-  margin-top: 1.5rem;
 
   @include tablet {
     flex-direction: row;
@@ -152,5 +170,15 @@
     text-align: left;
     font-size: 1.4rem;
     line-height: 2rem;
+  }
+}
+
+.menu-open {
+  top: 36vh;
+  @include tablet {
+    top: 13vh;
+  }
+  @include desktop {
+    top: 13h;
   }
 }

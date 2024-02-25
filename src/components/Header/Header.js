@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { AuthContext } from "../Context/authContext";
 import { Link, NavLink } from "react-router-dom";
 import "./Header.scss";
@@ -6,14 +6,13 @@ import logo from "../../assets/logos/pikin3.png";
 import blueicon from "../../assets/icons/blueicon.png";
 import orangeicon from "../../assets/icons/orangeicon.png";
 
-export default function Header() {
+export default function Header({ toggleMenu, menuOpen}) {
   const { currentUser, logout } = useContext(AuthContext);
-  const [menuOpen, setMenuOpen] = useState(false);
+ 
   const iconSrc =
     currentUser && currentUser.role === "Admin" ? orangeicon : blueicon;
-
   const handleMenuItemClick = () => {
-    setMenuOpen(false);
+   toggleMenu();
   };
 
   return (
@@ -21,10 +20,9 @@ export default function Header() {
       <header className="header">
         <nav className="nav">
           <Link to="/" className="nav__logo">
-            <img src={logo} className="nav__logoimg"></img>
+            <img src={logo} className="nav__logoimg" alt="logo"></img>
           </Link>
-
-          <div className="nav__menu" onClick={() => setMenuOpen(!menuOpen)}>
+          <div className="nav__menu" onClick={toggleMenu}>
             <span className="nav__span"></span>
             <span className="nav__span"></span>
             <span className="nav__span"></span>

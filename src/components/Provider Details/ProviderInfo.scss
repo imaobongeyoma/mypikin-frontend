@@ -35,8 +35,8 @@
   }
   &__profcont {
     border-radius: 50%;
-    height: 4rem;
-    width: 4rem;
+    height: 6.5rem;
+    width: 6.5rem;
     margin-bottom: 1rem;
   }
 
@@ -66,9 +66,13 @@
     display: flex;
   }
 
+  &__iconcont{
+    padding-top: 0.5rem;
+  }
   &__icon {
     height: 1.5rem;
     width: 1.5rem;
+   
   }
 
   &__createdaycare {

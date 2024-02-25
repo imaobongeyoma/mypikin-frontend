@@ -71,6 +71,7 @@ export default function ProviderInfo() {
             <img
               src={hero}
               className="hero__img"
+              alt="heroimage"
             ></img>
           </div>
       </section>
@@ -78,7 +79,7 @@ export default function ProviderInfo() {
       <div className="details">
      
         <div className="details__titlecont">
-          <h1 className="details__title"> Your Details</h1>
+          <h1 className="details__title"> Your Profile Details</h1>
         </div>
         {Object.keys(groupedProviders).length === 0 ? (
           <>
@@ -87,15 +88,17 @@ export default function ProviderInfo() {
               <img
                 src={`${SERVER_URL}/${user.profile_image}`}
                 className="details__profileimage"
+                alt="profileimage"
               ></img>
             </div>
             <div onClick={() => navigate(`/user/${user.id}/edit`)} className="hover-pointer details__edit"> 
             <p>Edit your profile</p>
-              <img
+              <div className="details__iconcont"><img
                 src={editicon}
                 alt="editicon"
                 className="details__icon"
               ></img>
+              </div>
             </div>
             </div>
             <div className="details__detail">Username: <span className="details__span">{user.username}</span></div>
@@ -122,16 +125,19 @@ export default function ProviderInfo() {
               <img
                 src={`${SERVER_URL}/${provider.profile_image}`}
                 className="details__profileimage"
+                alt="profileimage"
               ></img>
             </div>
             <div onClick={() => navigate(`/user/${user.id}/edit`)} className="hover-pointer details__edit"> 
             <p>Edit your profile</p>
+            <div className="details__iconcont">
               <img
                 src={editicon}
                 alt="editicon"
                 onClick={() => navigate(`/user/${provider.provider_id}/edit`)}
                 className="details__icon"
               ></img>
+              </div>
             </div>
             </div>
             <div className="details__detail">Username: <span className="details__span">{provider.username}</span></div>

@@ -84,7 +84,7 @@ export default function SelectedDaycare() {
       {Object.entries(groupedDaycares).map(([daycare_id, daycare]) => (
         <div key={daycare_id} className="singled">
           <div className="singled__imgcont">
-            <img src={daycare.daycarephotos[0]} className="singled__img"></img>
+            <img src={daycare.daycarephotos[0]} className="singled__img" alt={daycare.id}></img>
           </div>
           <div className="singled__topwrapper">
             <div className="singled__dpwrap">
@@ -100,22 +100,18 @@ export default function SelectedDaycare() {
                 </div>
 
                 <h3 className="singled__price">
-                  Price:
-                  <span className="singled__detail">
-                    
-                    ${daycare.price} per day
+                  Price: 
+                  <span className="singled__detail"> ${daycare.price} per day
                   </span>
                 </h3>
                 <h3 className="singled__hours">
-                  Hours:
-                  <span className="singled__detail">
+                  Hours: <span className="singled__detail">
                     
                     {daycare.hours_start}am to {daycare.hours_close}pm
                   </span>
                 </h3>
                 <h3 className="singled__location">
-                  Location:
-                  <span className="singled__detail">{daycare.city}</span>
+                  Location: <span className="singled__detail">{daycare.city}</span>
                 </h3>
                 <button
                   className="singled__contactcta"
@@ -126,13 +122,10 @@ export default function SelectedDaycare() {
                 {showContacts && (
                   <div className="singled__contacts">
                     <p className="singled__email">
-                      Please reach us at
-                      <span className="singled__detail">{daycare.email}</span>
+                      Please reach us at <span className="singled__detail">{daycare.email}</span>
                     </p>
                     <p className="singled__phone">
-                      Our phone number is
-                      <span className="singled__detail">
-                        {daycare.phone_number}
+                      Our phone number is <span className="singled__detail"> {daycare.phone_number}
                       </span>
                     </p>
                   </div>
@@ -145,6 +138,7 @@ export default function SelectedDaycare() {
                       <img
                         src={editicon}
                         alt="editicon"
+                        className="singled__icon"
                         title="Edit daycare info"
                         onClick={() =>
                           navigate(`/daycares/${daycare.daycare_id}/edit`)
@@ -157,6 +151,7 @@ export default function SelectedDaycare() {
                     <img
                       src={editicon}
                       alt="editicon"
+                      className="singled__icon"
                       title="Edit daycare info"
                       onClick={() =>
                         navigate(`/daycares/${daycare.daycare_id}/edit`)
@@ -165,6 +160,7 @@ export default function SelectedDaycare() {
                     <img
                       onClick={DeleteDaycare}
                       src={deleteicon}
+                      className="singled__icon"
                       alt="deleteicon"
                       title="Delete daycare"
                     ></img>
@@ -178,20 +174,21 @@ export default function SelectedDaycare() {
                   <img
                     src={`${SERVER_URL}${daycare.profile_image}`}
                     className="singled__profileimage"
+                    alt={daycare.id}
                   ></img>
                 </div>
 
-                <h3 className="singled__profdetails">
+                <h3 className="singled__profdetails ">
                   {daycare.first_name} {daycare.last_name}
                 </h3>
 
                 {daycare.background_check_done === "Yes" ? (
                   <div className="singled__bgcheck">
-                    <h3 className="singled__profdetails">
+                    <h3 className="singled__profdetails singled__bg">
                       Background Check Approved
                     </h3>
                     <div>
-                      <img src={blueicon} className="singled__bgimage"></img>
+                      <img src={blueicon} className="singled__bgimage" alt="blueicon"></img>
                     </div>
                   </div>
                 ) : (
@@ -199,7 +196,7 @@ export default function SelectedDaycare() {
                     <p className="singled__profdetails">
                       Background Check Not Approved
                     </p>
-                    <img src={orangeicon} className="singled__bgimage"></img>
+                    <img src={orangeicon} className="singled__bgimage" alt="orangeicon"></img>
                   </div>
                 )}
 
@@ -209,6 +206,7 @@ export default function SelectedDaycare() {
                       <Link to={`/user/${daycare.provider_id}/edit`}>
                         <img
                           src={editicon}
+                          className="singled__icon"
                           alt="editicon"
                           title="Edit provider details"
                         ></img>
@@ -216,6 +214,7 @@ export default function SelectedDaycare() {
                       <img
                         onClick={DeleteUser}
                         src={deleteicon}
+                        className="singled__icon"
                         alt="editicon"
                         title="Delete provider"
                       ></img>
@@ -229,6 +228,7 @@ export default function SelectedDaycare() {
                       <Link to={`/user/${daycare.provider_id}/edit`}>
                         <img
                           src={editicon}
+                          className="singled__icon"
                           alt="editicon"
                           title="Edit provider details"
                         ></img>
@@ -257,9 +257,7 @@ export default function SelectedDaycare() {
                             className="singled__photo"
                             key={index}
                             src={photo}
-                            alt={`Daycare Photo ${index}`}
-                            width={250}
-                            height={250}
+                            alt={`Daycare ${index}`}
                           />
                         </div>
                       )

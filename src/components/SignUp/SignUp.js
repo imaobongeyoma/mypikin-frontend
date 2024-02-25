@@ -7,7 +7,6 @@ import doubleicon from "../../assets/icons/doubleicon.png";
 import "./SignUp.scss";
 
 export default function SignUp() {
-  const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");

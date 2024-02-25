@@ -24,9 +24,7 @@ export default function EditUser() {
     profile_image: null,
   });
 
-  const [msg, setMsg] = useState("");
-
-  const navigate = useNavigate();
+   const navigate = useNavigate();
 
   const handleChange = (e) => {
     if (e.target.name === "profile_image") {       

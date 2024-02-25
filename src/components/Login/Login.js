@@ -8,7 +8,6 @@ import doubleicon from "../../assets/icons/doubleicon.png";
 
 export default function Login() {
   const { currentUser } = useContext(AuthContext);
-  const SERVER_URL = process.env.REACT_APP_SERVER_URL;
   const initialState = {
     username: "",
     password: "",
