@@ -154,8 +154,7 @@ export default function EditDayCare() {
                     name="daycare_description"
                     id="description"
                     value={formData.daycare_description}
-                    rows={10}
-                    cols={50}
+                    rows={2}
                     className="form__field form__textarea"
                     onChange={handleChange}
                   />
@@ -171,8 +170,7 @@ export default function EditDayCare() {
                     name="provider_about"
                     id="about"
                     value={formData.provider_about}
-                    rows={10}
-                    cols={50}
+                    rows={2}
                     className="form__field form__textarea"
                     onChange={handleChange}
                   />

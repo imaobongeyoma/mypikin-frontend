@@ -3,7 +3,7 @@
 @use "../../styles/partials/variables" as *;
 
 .sform {
-  padding-bottom: 2rem;
+  padding-bottom: 4rem;
 
   @include tablet {
     margin: 0rem 6rem;
@@ -139,5 +139,5 @@
 
 .form__textarea {
   font-family: inherit;
-  height: 5rem;
+  height: 6rem;
 }
