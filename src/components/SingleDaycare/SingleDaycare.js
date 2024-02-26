@@ -49,11 +49,11 @@ export default function SelectedDaycare() {
     if (!acc[daycare.daycare_id]) {
       acc[daycare.daycare_id] = {
         ...daycare,
-        daycarephotos: [`${SERVER_URL}${daycare.daycarephoto}`],
+        daycarephotos: [`${SERVER_URL}/${daycare.daycarephoto}`],
       };
     } else {
       acc[daycare.daycare_id].daycarephotos.push(
-        `${SERVER_URL}${daycare.daycarephoto}`
+        `${SERVER_URL}/${daycare.daycarephoto}`
       );
     }
     return acc;
@@ -84,7 +84,7 @@ export default function SelectedDaycare() {
       {Object.entries(groupedDaycares).map(([daycare_id, daycare]) => (
         <section key={daycare_id} className="singled">
           <div className="singled__imgcont">
-            <img src={daycare.daycarephotos[0]} className="singled__img" alt={daycare.id}></img>
+            <img src={daycare.daycarephotos[0]} className="singled__img" alt={daycare.daycare_id}></img>
           </div>
           <div className="singled__topwrapper">
             <div className="singled__dpwrap">

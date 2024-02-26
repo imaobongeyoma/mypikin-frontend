@@ -91,12 +91,12 @@ export default function DayCareList({menuOpen}) {
             .map((daycare) => (
               <div
                 key={daycare.id}
-                onClick={() => navigate(`/daycares/${daycare.id}/info`)}
+                onClick={() => navigate(`/daycares/${daycare.daycare_id}/info`)}
                 className="daycare hover-pointer"
               >
                 <div className="daycare__imagewrap">
                   <img
-                    src={`${SERVER_URL}${daycare.firstPhoto}`}
+                    src={`${SERVER_URL}/${daycare.firstPhoto}`}
                     alt="Daycare Photo"
                     className="daycare__cover"
                   />
