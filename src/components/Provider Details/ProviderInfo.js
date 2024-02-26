@@ -171,7 +171,7 @@ export default function ProviderInfo() {
                 </div>
               )}
               <hr className = "details__divider"></hr>
-              <h2>Your Daycare Details</h2>
+              <h1>Your Daycare Details</h1>
               <div className="details__detail">Daycare Name: <span className="details__span">{provider.name}</span></div>
               <div className= "details__buttons">
                 <button

@@ -172,7 +172,7 @@ export default function SelectedDaycare() {
                 <h2 className="singled__director">Program Director Details</h2>
                 <div className="singled__profcont">
                   <img
-                    src={`${SERVER_URL}${daycare.profile_image}`}
+                    src={`${SERVER_URL}/${daycare.profile_image}`}
                     className="singled__profileimage"
                     alt={daycare.id}
                   ></img>
