@@ -12,6 +12,10 @@ import SingleDaycarePage from "./pages/SingleDaycarePage";
 import NotFound from "./components/NotFound/NotFound";
 import Footer from "./components/Footer/Footer";
 import DayCareList from "./components/DayCareList/DayCareList";
+import About from "./pages/About/About";
+import Support from "./pages/Support/Support";
+import Terms from "./pages/Terms/Terms";
+import Privacy from "./pages/Privacy/Privacy";
 
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -24,6 +28,10 @@ function App() {
     <BrowserRouter>
       <Header toggleMenu={toggleMenu} menuOpen={menuOpen} />
       <Routes>
+        <Route path="/about" element={<About />} />
+        <Route path="/support" element={<Support />} />
+        <Route path="/terms" element={<Terms />} />
+        <Route path="/privacy" element={<Privacy />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/user/:providerid/" element={<ProviderInfoPage />} />

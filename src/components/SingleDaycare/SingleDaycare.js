@@ -82,7 +82,7 @@ export default function SelectedDaycare() {
   return (
     <Wrapper>
       {Object.entries(groupedDaycares).map(([daycare_id, daycare]) => (
-        <div key={daycare_id} className="singled">
+        <section key={daycare_id} className="singled">
           <div className="singled__imgcont">
             <img src={daycare.daycarephotos[0]} className="singled__img" alt={daycare.id}></img>
           </div>
@@ -168,7 +168,7 @@ export default function SelectedDaycare() {
                 )}
               </div>
 
-              <div className="singled__profile">
+              <section className="singled__profile">
                 <h2 className="singled__director">Program Director Details</h2>
                 <div className="singled__profcont">
                   <img
@@ -235,7 +235,7 @@ export default function SelectedDaycare() {
                       </Link>
                     </div>
                   )}
-              </div>
+              </section>
             </div>
 
             <div className="singled__bottomdetails">
@@ -265,7 +265,7 @@ export default function SelectedDaycare() {
               </div>
             </div>
           </div>
-        </div>
+        </section>
       ))}
     </Wrapper>
   );

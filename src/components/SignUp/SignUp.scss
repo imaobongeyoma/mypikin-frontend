@@ -94,6 +94,7 @@
     }
   }
 
+
   &__stylewrap {
     display: flex;
     flex-direction: column;
@@ -124,6 +125,10 @@
     font-size: 0.75rem;
   }
 
+  &__terms-link {
+    color: blue;
+  }
+
   &__existing {
     text-align: right;
     font-size: 0.75rem;
@@ -131,12 +136,17 @@
     justify-content: flex-end;
   }
 
-  &__login,
+ 
   &__signup {
     color: $green;
-    font-weight: bold;
+  }
+
+  &__login-link {
+    color: blue;
   }
 }
+
+
 
 ::placeholder {
   color: $placeholder;

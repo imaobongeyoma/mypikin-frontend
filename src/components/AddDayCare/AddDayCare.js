@@ -145,7 +145,7 @@ export default function AddDayCare() {
             daycare details. If you need more help, please contact support
           </div>
         ) : (
-          <div className="sform">
+          <section className="sform">
             <div className="sform__heading">
               <h1 className="sform__title">Create Daycare</h1>
             </div>
@@ -379,7 +379,7 @@ export default function AddDayCare() {
                 </button>
               </div>
             </form>
-          </div>
+          </section>
         )}
       </Wrapper>
     </>

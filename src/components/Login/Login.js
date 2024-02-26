@@ -44,7 +44,7 @@ export default function Login() {
 
   return (
     <Wrapper>
-      <div className="sform">
+      <section className="sform">
         <div className="sform__heading">
           <h1 className="sform__title"> Welcome</h1>
         </div>
@@ -99,7 +99,7 @@ export default function Login() {
             </p>
           </div>
         </form>
-      </div>
+      </section>
     </Wrapper>
   );
 }

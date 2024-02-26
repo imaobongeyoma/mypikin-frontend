@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# Project Title
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+myPIKIN
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+myPIKIN is a place where parents can find home daycares close to them. My Pikin means My Child in Nigerian pidgin English.
 
-### `npm start`
+### Problem
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+There is a huge day care crisis in many areas in Canada. There are issues on two fronts:
+Parents are facing significant challenges in getting reliable and affordable childcare for their children. The wait lists are long and the wait times are unreasonable with some parents having to wait more than a year to get care for their children. This causes a lot of frustration and stress for families as sometimes, these parents are unable to go back to work as they have to embark on fulltime childcare responsibilities till a daycare spot opens up for them.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+On the second front, daycare workers often find themselves undercompensated for the crucial role that they play in early childhood development. Despite the demanding nature of their work and thhe great impact they have on children's lives, many daycare workers struggle to make ends meet due to low wages and limited benefits. This not only affects the livelihoods of daycare workers but also undermines the quality of care provided to children. In recent months, may day care centers have had to shutdown because they could no longer afford the expenses of running the centers.
 
-### `npm test`
+I believe there is an untapped solution for these issues - Home Daycares. So many people (stay at home parents, early childhood educators, friends and family) have a passion for taking care of children but they currently either do it for just their kids/family without compensation or do it for too little compensation. If they could turn this passion into a business, they would not only make some income from it but also help reduce the waitlist/wait times for finding daycare. This is where myPIKIN comes in. The goal of myPIKIN is to help parents find home daycares in their area! Also childcare providers would be able to set their prices for their service.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### User Profile
 
-### `npm run build`
+-Parents - looking for home child care in their location
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+-Childcare workers: - offering child care services in their homes - they want to set their own prices
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Features
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- As a parent, I want to search for day cares in my city and view their day care info including contact info and prices.
+- As a child care provider:
+  - I want to create a listing of my service and set my price.
+  - I want to update my listing at any time.
 
-### `npm run eject`
+## Implementation
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Tech Stack
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- React
+- MySQL
+- Client libraries:
+  - react
+  - react-router
+  - axios
+- Server libraries:
+  - knex
+  - express
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+  ### How to run this app
+  step 1: run npm init on root directory
+  step 2: install the following dependencies by running npm i followed by the dependency name: axios, sass, react-router-dom
+  step 3: run npm start on the root directory - ensure you are using port 3000 to enable the backend connect as well.
 
-## Learn More
+  ## What coming in future versions of this app
+- Integrating with google maps to show /daycares on map when searching a particular location.
+- More detailed info about the day care (child ages accepted) and ability for parents to filter based on a combination of these details.
+- A blog on child care topics.
+- Messaging system to communicate with providers.
+- Wishlist for favorite daycares.
+- Booking system for booking a day care straight from the website/ a payment system to pay providers on the website.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

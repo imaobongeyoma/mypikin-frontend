@@ -5,6 +5,7 @@ import axios from "axios";
 import Wrapper from "../Wrapper/Wrapper";
 import doubleicon from "../../assets/icons/doubleicon.png";
 import "./SignUp.scss";
+import { Link } from "react-router-dom";
 
 export default function SignUp() {
 
@@ -44,7 +45,7 @@ export default function SignUp() {
 
   return (
     <Wrapper>
-      <div className="sform">
+      <section className="sform">
         <div className="sform__heading">
           <h1 className="sform__title">Provide Care</h1>
         </div>
@@ -155,8 +156,8 @@ export default function SignUp() {
             />
           </div>
           <p className="form__terms">
-            Signing up means you have read and agree to the Terms of Service and
-            our Privacy Policy
+            Signing up means you have read and agree to the <span onClick={() => navigate("/terms")} className="form__terms-link">Terms of Service </span> and  our <span onClick={() => navigate("/privacy")} className="form__terms-link">
+            Privacy Policy</span>
           </p>
 
           <button className="form__submit" type="submit">
@@ -165,13 +166,12 @@ export default function SignUp() {
           <div className="form__existing">
             <p className="form__accowner">
               Already have an account?
-              <span onClick={() => navigate("/login")} className="form__login">
-                Log in
+              <span onClick={() => navigate("/login")} className="form__login form__login-link"> Log in
               </span>
             </p>
           </div>
         </form>
-      </div>
+      </section>
     </Wrapper>
   );
 }

@@ -1,4 +1,3 @@
-//my daycare component js
 import React, { useContext, useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
@@ -108,7 +107,7 @@ export default function EditDayCare() {
       <Wrapper>
         {currentUser.id === formData.provider_id ||
         currentUser.role === "Admin" ? (
-          <div className="sform">
+          <section className="sform">
             <div className="sform__heading">
               <h1 className="sform__title">Edit Daycare</h1>
             </div>
@@ -156,8 +155,8 @@ export default function EditDayCare() {
                     id="description"
                     value={formData.daycare_description}
                     rows={10}
-                    columns={50}
-                    className="form__field"
+                    cols={50}
+                    className="form__field form__textarea"
                     onChange={handleChange}
                   />
                 </div>
@@ -173,8 +172,8 @@ export default function EditDayCare() {
                     id="about"
                     value={formData.provider_about}
                     rows={10}
-                    columns={50}
-                    className="form__field"
+                    cols={50}
+                    className="form__field form__textarea"
                     onChange={handleChange}
                   />
                 </div>
@@ -333,9 +332,9 @@ export default function EditDayCare() {
                 Edit Daycare
               </button>
             </form>
-          </div>
+          </section>
         ) : (
-          <div className="access">
+          <section className="access">
             <h2>
               
               You are not the owner of this daycare. Please visit your profile.
@@ -351,7 +350,7 @@ export default function EditDayCare() {
                 <button className="access__homebtn access__btn">Home</button>
               </Link>
             </div>
-          </div>
+          </section>
         )}
       </Wrapper>
     </>

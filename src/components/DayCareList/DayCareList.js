@@ -40,7 +40,7 @@ export default function DayCareList({menuOpen}) {
   return (
     <Wrapper>
         <div className="searchcontainer">
-        <div className={`search ${menuOpen? 'menu-open' : ""}`}>
+        <section className={`search ${menuOpen? 'menu-open' : ""}`}>
           <img src={searchicon} className="search__sicon" alt="searchicon"></img>
           <input
             type="text"
@@ -51,12 +51,12 @@ export default function DayCareList({menuOpen}) {
             className="search__box"
           ></input>
           
-        </div>
+        </section>
        
-        <div className="home">
+        <section className="home">
         
         <div className="daycarewrapper">
-          {Object.values(groupedDaycares)
+          {groupedDaycares && Object.values(groupedDaycares)
             .filter((daycare) => {
               if (searchTerm === "") {
                 return true;
@@ -117,7 +117,7 @@ export default function DayCareList({menuOpen}) {
               </div>
             ))}
         </div>
-      </div>
+      </section>
       </div>
     </Wrapper>
   );

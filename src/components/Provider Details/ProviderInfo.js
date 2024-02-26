@@ -1,4 +1,3 @@
-//my daycare list component js
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
@@ -76,7 +75,7 @@ export default function ProviderInfo() {
           </div>
       </section>
 
-      <div className="details">
+      <section className="details">
      
         <div className="details__titlecont">
           <h1 className="details__title"> Your Profile Details</h1>
@@ -196,7 +195,7 @@ export default function ProviderInfo() {
             </div>
           ))
         )}
-      </div>
+      </section>
     </Wrapper>
   );
 }

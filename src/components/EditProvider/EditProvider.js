@@ -107,7 +107,7 @@ export default function EditUser() {
     <>
     <Wrapper>
         {currentUser.first_name === formData.first_name || currentUser.role === "Admin" ? (
-      <div className="sform">
+      <section className="sform">
         <div className="sform__heading sform__margin">
           <h1 className="sform__title">Edit Profile</h1>
         </div>
@@ -260,12 +260,12 @@ export default function EditUser() {
             Update
           </button>
         </form>
-      </div>
+      </section>
 
         ):
         (
         
-                <div className ="access"> 
+                <section className ="access"> 
   
         <h2> You are allowed to update this user. Please visit your profile.</h2>
         <div className="access__btns">
@@ -273,7 +273,7 @@ export default function EditUser() {
         <Link to="/"> <button className="access__homebtn access__btn">Home</button></Link>
         </div>
 
-     </div>
+     </section>
          )} 
     </Wrapper>
     </>
