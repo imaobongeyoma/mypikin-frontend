@@ -87,21 +87,24 @@
 }
 
 .daycarewrapper {
-  padding: 1rem 1rem 2rem;
+  padding: 3rem 1rem 2rem;
   display: flex;
   flex-direction: column;
+  gap: 1.5rem;
 
   @include tablet {
+    padding: 3rem 2rem 2rem;
     flex-direction: row;
     justify-content: flex-start;
-    gap: 1rem;
+    gap: 1.5rem;
+    row-gap: 2rem;
     flex-wrap: wrap;
   }
 
   @include desktop {
     flex-direction: row;
     justify-content: flex-start;
-    gap: 1rem;
+    gap: 1.5rem;
     flex-wrap: wrap;
   }
 }
@@ -120,12 +123,12 @@
   border-radius: 15px;
 
   @include tablet {
-    width: calc(33.33% - 0.67rem);
+    width: calc(33.33% - 1rem);
     border-bottom: 2rem;
   }
 
   @include desktop {
-    width: calc(25% - 0.75rem);
+    width: calc(25% - 1.13rem);
   }
 
   &__imagewrap {

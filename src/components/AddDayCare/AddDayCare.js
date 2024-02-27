@@ -141,7 +141,7 @@ export default function AddDayCare() {
       <Wrapper>
         {selectedProvider.length > 0 || parseInt(id, 10) !== currentUser.id ? (
           <div>
-            You cannot create more than one daycare. You can edit your existing
+            Hello {currentUser.first_name}! You cannot create more than one daycare. You can edit your existing
             daycare details. If you need more help, please contact support
           </div>
         ) : (
